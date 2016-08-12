@@ -1,0 +1,34 @@
+= Konzept und Notizen zu „Russisch unterwegs: Moderne Android-Entwicklung mit Kotlin”
+
+== Kotlin allgemein
+
+=== Prägnanz
+- kein Semikolon
+- kein `new`
+
+=== ???
+- Extension methods & Receiver
+- DSL (destructuring)
+
+
+=== Konventionen
+- `.rangeTo()`, `.plus()` ...
+-
+
+== Android & Kotlin
+
+==== Anko
+
+- DSL für GUI
+
+== Praxiserfahrungen
+
+=== Praxis-Erfahrungen Kotlin-Sprache
+- Mehr lokale Variablen vs. Feld für Implicit Cast
+
+=== Praxis-Erfahrungen Android + Kotlin
+- Android Studio & Infrastruktur sehr wackelig
+- Kotlin-Konverter der Beispiele nicht empfehlenswert
+    * Non-Nullables die in der Praxis doch welche sind
+    * `feld!!.foo` statt `lokaleVar.foo`.
+      Speziell die UI Referenzen (nach`onCreate`)
