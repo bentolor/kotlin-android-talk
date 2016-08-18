@@ -2,20 +2,115 @@
 
 == Kotlin allgemein
 
-=== Prägnanz
+=== Prägnanz & Syntax Sugar
 - kein Semikolon
 - kein `new`
+-  ?. und ?:
+- Smartcast
+- Immutable: val / var, List vs. MutableList
+- Type inference
+- Properties
+    * Getter / Setter (auch aus Java-Code)
 
 === ???
 - Extension methods & Receiver
 - DSL (destructuring)
 
+=== Security
+
+- First class immutables (val, list vs.mutable list, ...)
+- nullpoiner explicit
 
 === Konventionen
 - `.rangeTo()`, `.plus()` ...
--
+- `it` für lambdass
+- `AhaLab.get(activity)` -> `AhaLab[activity]`
+
+=== Idiome
+- if = Ausdruck
+  ```
+  fun isEven(i: Int) = if (i.mod(2) == 0) "gerade" else "ungerade"
+  ```
+- with()
+- `use()` (Ersatz von java `try-with`)
 
 == Android & Kotlin
+
+=== Beispiel #1 : Data Class
+siehe Aha!
+
+=== Beispiel
+```
+        for (int i = 0; i < mAhas.size(); i++) {
+            if (mAhas.get(i).getId().equals(ahaId)) {
+                mViewPager.setCurrentItem(i);
+                break;
+            }
+        }
+```
+
+```
+        viewPager.currentItem = mAhas.indexOfFirst { it.id == ahaId  }
+```
+
+=== Named Parameters & Default Values
+
+```
+        for (int i = 0; i < count; i++) {
+            Aha aha = new Aha();
+            aha.setTitle("Aha #" + i);
+            aha.setUseful((i % 2) == 0); // Alternate
+            mAhas.add(aha);
+        }
+```
+wird
+```
+        for (i in 0..count - 1) {
+            val aha = Aha(title = "Aha #$i", isUseful = (i % 2 == 0))
+            ahas.add(aha)
+        }
+```
+
+=== Beispiel #2 : Android Extension
+
+Synthetische Properties
+
+Aus
+```
+CheckBox usefulBox = (CheckBox) v.findViewById(R.id.aha_useful);
+// bzw.
+val usefulBox = v.findViewById(R.id.aha_useful) as CheckBox
+```
+wird
+
+```
+import kotlinx.android.synthetic.main.fragment_aha.*
+
+aha_useful.isChecked = mAha!!.isUseful
+```
+Wegfall von Cast. Wegfall von R.id
+
+Nachteil: Tut für Fragments nur in `onViewCreated`, da `getView().`
+
+> When you access btn_K, it calls for getView().findViewById(R.id.btn_K).
+
+=== `lateinit`
+
+=== functional
+
+```
+    public Aha getAha(UUID id) {
+        for (Aha c : mAhas) {
+            if (c.getId().equals(id))
+                return c;
+        }
+        return null;
+    }
+```
+
+```
+    fun getAha(id: UUID): Aha? = ahas.filter { it.id == id }.firstOrNull()
+```
 
 ==== Anko
 

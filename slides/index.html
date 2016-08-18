@@ -14,7 +14,7 @@
               sodass auch Neueinsteiger gut folgen können und interessante Einblicke in Kotlin und Android gewinnen.">
 
     <link rel="stylesheet" href="css/reveal.css">
-    <link rel="stylesheet" href="css/theme/black.css">
+    <link rel="stylesheet" href="css/theme/white.css">
 
     <!-- Theme used for syntax highlighting of code -->
     <link rel="stylesheet" href="lib/css/zenburn.css">
@@ -42,7 +42,7 @@
 
         <section>
             <div style="text-align: left;">
-                <h1 style="margin: 340px 0 0 0; font-size: 1.9em;">Russisch unterwegs!</h1>
+                <h1 style="margin: 380px 0 0 0; font-size: 1.9em;">Russisch unterwegs!</h1>
                 <!--<h5><i> Lightning Talk:</i></h5>-->
                 <h3 style="" class="emphasize">
                     Kotlin für die <br>moderne Android-Entwicklung
@@ -53,7 +53,7 @@
                 2016-08-22
             </div>
 
-            <div class="profile" style="position: absolute; top: 20px; left: 550px;">
+            <div class="profile" style="position: absolute; top: 0px; left: 900px;">
                 <div class="profile-sidebar">
                     <div class="profile-userpic">
                         <img data-src="img/BenjaminSchmid.jpg" class="img-responsive" alt="">
@@ -72,7 +72,14 @@
                 </div>
             </div>
 
-            <div id="rightsection">
+            <div>
+                <img data-src="img/kotlin_logos/logo_Kotlin.svg"
+                     style="width: 300px; position: absolute; top: 0; left: 0;"
+                     class="plain" alt="Kotlin Logo"
+                />
+            </div>
+
+            <div id="rightsection" class="right">
                 <code>?</code> for help
             </div>
 
@@ -102,34 +109,56 @@
         <!--
           === Overview ============================================================================
         -->
-
-
         <section>
-
-            <!--<section>-->
-            <div>
-                <div data-markdown>
-                    ## Datasheet
+            <section data-background="img/kotlin-island-map.png" data-transition="fade-out">
+                <div data-markdown class="abs">
+                    ## Was ist Kotlin?
                 </div>
-                <div style="width: 85%; margin: 0 auto;">
-                    <div data-markdown class="twocol">
-                        ##### Datasheet
-                        - **82** JEP targeted
-                        - GA Release:   <!-- -->
-                        ~~2016-09-22~~ **2017-03-23**
-                        - Brewing since: 2014-08-11
-                    </div>
-                    <div data-markdown class="twocol">
-                        ##### Highlights
-                        - Jigsaw
-                        - Tooling
-                        - HTTP API
-                        - Language details
-                    </div>
+                <div class="fragment abs" style="right: 0px; top: 620px; text-align: right">
+                    <p class="large"><b>Russische Insel</b> </p>
+                    <p class="decent x-small">im finnischen Golf, 32km vor Petersburg</p>
                 </div>
-            </div>
-            <!--</section>-->
+            </section>
 
+            <section data-background="img/kotlin_logos/icon_Kotlin.svg" class="center">
+                <div style="width: 100%; text-align: right;" >
+                    <p>statisch typisierte<br/>
+                        <b><span class="x-large">Allzweck-Sprache</span></b><br/>
+                        für JVM und Browser</p>
+                </div>
+            </section>
+
+            <section data-background="img/kotlin_logos/icon_Kotlin.svg" class="center">
+                <div data-markdown class="right x-small" >
+                    ## Prägnanz
+
+                    ## Sicherheit
+
+                    ## Ausdruckstärke
+
+                    ## Interoperabilität
+
+                    ## Tooling
+                </div>
+            </section>
+
+            <section data-background="img/kotlin_logos/icon_Kotlin.svg" class="center">
+                <div class="right" >
+                    <h2 class="large">Datenblatt</h2>
+
+                    <p>Freie Software</p>
+                    <p class="decent subline x-small">APL 2.0</p>
+
+                    <p>backed by JetBrains</p>
+                    <p class="decent subline x-small">20 Vollzeit & Community<br/>
+                        „dogfooding“: 0,5 Mio. LOC</p>
+
+                    <p>backed by JetBrains</p>
+                    <p class="decent subline x-small">20 Vollzeit & Community</p>
+
+
+                </div>
+            </section>
         </section>
 
         <!--
@@ -139,9 +168,118 @@
         <section>
 
             <section>
-
                 <div data-markdown>
-                    # Tooling
+                    <script type="text/template">
+                        ##### `lateinit`
+                        ```
+                        lateinit var name: String
+                        var age: Int by Delegates.notNull&lt;String&gt;()
+                        ```
+                    </script>
+                </div>
+            </section>
+
+            <section>
+                <div data-markdown>
+                    <script type="text/template">
+                        ##### `lateinit`
+                        ```
+                        val imm: InputMethodManager by lazy {
+                        getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
+                        }
+                        ```
+                    </script>
+                </div>
+            </section>
+
+            <section>
+                <div data-markdown>
+                    <script type="text/template">
+                        ##### No static modifier
+
+                        Following on the previous point, Kotlin has unusual handling of static function and property declarations that are called from Java. It’s not bad, but it feels dirtier than necessary. For example, the Android View class defines some static constants like View.VISIBLE and static methods like View.inflate:
+
+                        ```
+                        public class View {
+                        public static final int VISIBLE = 0x00000000;
+                        public static final int INVISIBLE = 0x00000004;
+                        public static View inflate(Context context, int resource) {...}
+                        }
+                        ```
+                        ```
+                        class View {
+                        companion object {
+                        @JvmField
+                        val VISIBLE: Int = 0x00000000
+                        @JvmField
+                        val INVISIBLE: Int = 0x00000004
+                        @JvmStatic
+                        fun inflate(context: Context, resource: Int) {...}
+                        }
+                        }
+                        }
+
+
+                        // With annotations:
+                        View.VISIBLE;
+
+                        //Without annotations:
+                        View.Companion.getVISIBLE();
+                        ```
+                    </script>
+                </div>
+            </section>
+
+            <section>
+                <div data-markdown>
+                    <script type="text/template">
+                        ##### Method count
+                        Writing code in Kotlin will certainly reduce the number of lines of code in your project. But it will also probably increase the method count of the compiled code, which is of course a drawback if you’re using Android. There are a number of reasons for that, but one of the larger contributors is the way Kotlin implements properties.
+
+                        Unlike Java, the Kotlin language doesn’t provide any way to define a bare field. All val and var declarations instead create a property.
+
+                        If you are close to the method limit in your android app, I recommend using the workaround of applying the @JvmField annotation on public constants for which you don’t expect to need a custom getter for in the future. This will prevent the getters from being generated, and can cut down on your method count.
+
+                        It’s not all bad, though. As I discussed in my article on converting an app to 100% Kotlin, the Kotlin standard library is small and can replace a number of common Java libraries that are much larger once you don’t need them in Java any more. Thanks to the standard library, the method count in that app decreased after converting it to Kotlin. So as long as you avoid the big areas that can increase your method count, you may end up ahead in the end.
+                    </script>
+                </div>
+            </section>
+
+            <section>
+                <div data-markdown>
+                    <script type="text/template">
+                        ##### bidirektionales interop
+                        Gerade auf dem Weg zurück unagenehm
+
+                        ##### Keine SAMs, da
+                        ```
+                        fun registerCallback(r: () -> Unit)
+                        ```
+
+                        in Java wie folgt aufgerufen muss
+
+                        ```
+                        registerCallback(() -> {
+                        /** do stuff */
+                        return Unit.INSTANCE;
+                        })
+                        ```
+
+                        Ergo: Libaries für Java eher in JAva
+                    </script>
+                </div>
+            </section>
+
+            <section>
+                <div data-markdown>
+                    <script type="text/template">
+                        ##### final by default
+                        - functions!
+
+                        #####  public by default
+
+                        ##### Kein `package protected`
+                    </script>
                 </div>
             </section>
 
@@ -188,7 +326,6 @@
 
             <section>
                 <h3>HTML5 Javadoc example output</h3>
-                <img src="img/javadoc-html5-example.png" alt="Example Java 9 Javadoc output with HTML5 enabled">
             </section>
 
 
@@ -219,49 +356,6 @@
         <section>
 
 
-            <section>
-                <div class="small">
-                    <div data-markdown>
-                        ## Language details
-                    </div>
-
-                    <div class="twocol">
-                        <div data-markdown>
-                            <script type="text/template">
-                                ##### Process Control
-                                - Retrieve & inspect processes
-                                - Kill processes
-
-                                ##### Collections
-                                ```
-                                List/Map/Set.of(1, 2, 3);
-                                ```
-
-                                ##### Enhanced Deprecated
-                                ````java
-                                @Deprecated(since ="1.5", forRemoval = true)
-                                ````
-
-                            </script>
-                        </div>
-                    </div>
-                    <div class="twocol" data-markdown>
-                        <script type="text/template">
-                            ##### Stream
-                            ```
-                            InputStream.transferTo(OutputStream out);
-                            ```
-
-                            ##### StackWalker
-
-                            ##### Package name
-                            ````
-                            this.getClass().getPackageName()
-                            ````
-                        </script>
-                    </div>
-                </div>
-            </section>
 
             <section>
                 <div data-markdown>
@@ -495,50 +589,19 @@
             <section>
                 <div class="small">
                     <div data-markdown>
-                        ## Many (obscure) Details
+                        ## Quellen
                     </div>
 
                     <div class="twocol" data-markdown>
                         <script type="text/template">
-                            ##### Performance
-                            - Improve Contended Locking [JEP 102](http://openjdk.java.net/jeps/143)<!-- .element: class="jep" -->
-                            - Segmented Code Cache [JEP 197](http://openjdk.java.net/jeps/197)<!-- .element: class="jep" -->
-                            - Smart Java Compilation [JEP 199](http://openjdk.java.net/jeps/199)<!-- .element: class="jep" -->
-
-                            ##### Unified JVM Logging
-                            - Same logging for _whole_ JVM (GC, ...)
-                            [JEP 158](http://openjdk.java.net/jeps/158) <!-- .element: class="jep" -->
-
-                            ##### Obscure stuff
-                            - JVM Compiler Control [JEP 165](http://openjdk.java.net/jeps/165)<!-- .element: class="jep" -->
-                            - UDP Security (DTLS) [JEP 219](http://openjdk.java.net/jeps/219)<!-- .element: class="jep" -->
-                            - Variable Handles [JEP 193](http://openjdk.java.net/jeps/139)<!-- .element: class="jep" -->
-                            - Remove depcreated GC combinations
-                            [JEP 214](http://openjdk.java.net/jeps/214) <!-- .element: class="jep" -->
-                            - Process Import Statements Correctly
-                            [JEP 216](http://openjdk.java.net/jeps/216) <!-- .element: class="jep" -->
+                            ##### Bilder
+                            - [Kotlin Islands Maps](https://commons.wikimedia.org/wiki/File:Kotlin_Island_1706.png)
 
                         </script>
                     </div>
 
                     <div class="twocol" data-markdown>
                         <script type="text/template">
-                            ##### HTTP 2 Client
-                            -  implements HTTP/2 and WebSocket
-                            [JEP 110](http://openjdk.java.net/jeps/110) <!-- .element: class="jep" -->
-
-
-                            ##### Fixes / Enhancements
-                            - UTF-8 Property Files
-                            [JEP 226](http://openjdk.java.net/jeps/226) <!-- .element: class="jep" -->
-                            - HiDPI Graphics on Windows and Linux
-                            [JEP 263](http://openjdk.java.net/jeps/263) <!-- .element: class="jep" -->
-                            - Milling Project Coin <span>(5 enhancements)</span> <!-- .element: class="decent small" -->
-                            [JEP 213](http://openjdk.java.net/jeps/213) <!-- .element: class="jep" -->
-                            - Elide Deprecation Warnings on Imports Statements
-                            [JEP 211](http://openjdk.java.net/jeps/211) <!-- .element: class="jep" -->
-                            - Resolve Lint and Doclint Warnings
-                            [JEP 212](http://openjdk.java.net/jeps/212) <!-- .element: class="jep" -->
                         </script>
                     </div>
 
@@ -559,6 +622,12 @@
                           progress: true,
                           slideNumber: true,
                           mouseWheel: true,
+                          controls: false,
+                          width: 1280,
+                          height: 720,
+                          margin: 0.1,
+                          maxScale: 10,
+                          center: false,
                           parallaxBackgroundImage: null, // 'http://jamescroft.co.uk/wp-content/uploads/2015/01/217-L6YVU1.jpg',
                           parallaxBackgroundSize: '1920px 1080px',
 
