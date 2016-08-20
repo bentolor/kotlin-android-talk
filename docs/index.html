@@ -85,7 +85,7 @@
 
             <div id="licence">
                 <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/InteractiveResource"
-                           property="dct:title" rel="dct:type">
+                      property="dct:title" rel="dct:type">
                     Kotlin für die moderne Android-Entwicklung
                 </span>
                 by
@@ -115,13 +115,13 @@
                     ## Was ist Kotlin?
                 </div>
                 <div class="fragment abs" style="right: 0px; top: 620px; text-align: right">
-                    <p class="large"><b>Russische Insel</b> </p>
+                    <p class="large"><b>Russische Insel</b></p>
                     <p class="decent x-small">im finnischen Golf, 32km vor Petersburg</p>
                 </div>
             </section>
 
             <section data-background="img/kotlin_logos/icon_Kotlin.svg" class="center">
-                <div style="width: 100%; text-align: right;" >
+                <div style="width: 100%; text-align: right;">
                     <p>statisch typisierte<br/>
                         <b><span class="x-large">Allzweck-Sprache</span></b><br/>
                         für JVM und Browser</p>
@@ -129,7 +129,7 @@
             </section>
 
             <section data-background="img/kotlin_logos/icon_Kotlin.svg" class="center">
-                <div data-markdown class="right x-small" >
+                <div data-markdown class="right x-small">
                     ## Prägnanz
 
                     ## Sicherheit
@@ -143,7 +143,7 @@
             </section>
 
             <section data-background="img/kotlin_logos/icon_Kotlin.svg" class="center">
-                <div class="right" >
+                <div class="right">
                     <h2 class="large">Datenblatt</h2>
 
                     <p>Freie Software</p>
@@ -155,9 +155,18 @@
 
                     <p>backed by JetBrains</p>
                     <p class="decent subline x-small">20 Vollzeit & Community</p>
-
-
                 </div>
+            </section>
+
+        </section>
+
+        <!--
+          === Hello Kotlin! =======================================================================
+        -->
+
+        <section>
+            <section>
+                <h1>Hello Kotlin!</h1>
             </section>
         </section>
 
@@ -318,7 +327,8 @@
                         - Enable via `-html5` parameter
                         - Search capability
                         - HTML5 & updated Doclet API
-                        - Improved DocLint: <span>`-Xdoclint/package:java.*,javax.*`</span> <!-- .element: class="small" -->
+                        - Improved DocLint:
+                        <span>`-Xdoclint/package:java.*,javax.*`</span> <!-- .element: class="small" -->
                     </script>
                 </div>
             </section>
@@ -354,7 +364,6 @@
 
 
         <section>
-
 
 
             <section>
@@ -618,32 +627,32 @@
 <script>
     // More info https://github.com/hakimel/reveal.js#configuration
     Reveal.initialize({
-                          history: true,
-                          progress: true,
-                          slideNumber: true,
-                          mouseWheel: true,
-                          controls: false,
-                          width: 1280,
-                          height: 720,
-                          margin: 0.1,
-                          maxScale: 10,
-                          center: false,
-                          parallaxBackgroundImage: 'img/kotlin-island-map-light.png', // 'http://jamescroft.co.uk/wp-content/uploads/2015/01/217-L6YVU1.jpg',
-                          parallaxBackgroundSize: '4177px 2118px',
+        history: true,
+        progress: true,
+        slideNumber: true,
+        mouseWheel: true,
+        controls: false,
+        width: 1280,
+        height: 720,
+        margin: 0.1,
+        maxScale: 10,
+        center: false,
+        parallaxBackgroundImage: 'img/kotlin-island-map-light.png', // 'http://jamescroft.co.uk/wp-content/uploads/2015/01/217-L6YVU1.jpg',
+        parallaxBackgroundSize: '4177px 2118px',
 
-                          // More info https://github.com/hakimel/reveal.js#dependencies
-                          dependencies: [
-                              {src: 'plugin/markdown/marked.js'},
-                              {src: 'plugin/markdown/markdown.js'},
-                              {src: 'plugin/notes/notes.js', async: true},
-                              {
-                                  src: 'plugin/highlight/highlight.js', async: true, callback: function () {
-                                  hljs.initHighlightingOnLoad();
-                              }
-                              },
-                              {src: 'plugin/zoom-js/zoom.js', async: true}  // Zoom in and out with Alt+click
-                          ]
-                      });
+        // More info https://github.com/hakimel/reveal.js#dependencies
+        dependencies: [
+            {src: 'plugin/markdown/marked.js'},
+            {src: 'plugin/markdown/markdown.js'},
+            {src: 'plugin/notes/notes.js', async: true},
+            {
+                src: 'plugin/highlight/highlight.js', async: true, callback: function () {
+                hljs.initHighlightingOnLoad();
+            }
+            },
+            {src: 'plugin/zoom-js/zoom.js', async: true}  // Zoom in and out with Alt+click
+        ]
+    });
 </script>
 </body>
 </html>
