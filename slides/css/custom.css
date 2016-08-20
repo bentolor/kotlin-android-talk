@@ -101,7 +101,7 @@
     text-align: center;
 }
 
-.reveal .right {
+.reveal .right, #rightsection {
     text-align: right;
 }
 .reveal .left {
@@ -172,15 +172,6 @@
     box-shadow: none;
 }
 
-/* Hintergrund abschwächen */
-body {
-    /*background-color: #000;*/
-}
-
-.backgrounds {
-    /*opacity: 0.7;*/
-}
-
 /* Top & bottom gaps */
 .tgap {
     margin-top: .8em !important;
@@ -200,16 +191,17 @@ body {
 .reveal code {
     border-radius: 5px;
     padding: 0 7px 2px;
-    border: 1px solid rgba(64, 64, 64, .4);
-    background: rgba(7, 136, 195, 0.8);
+    border: 1px solid rgba(64, 64, 64, .8);
+    background: rgba(7, 136, 195, 0.1);
     font-size: .8em;
     white-space: nowrap;
 }
 
 .reveal pre code {
     padding: 20px;
-    background: rgba(7, 136, 195, 0.8);
-    border: none;
+    background: rgba(7, 136, 195, 0.1);
+    border: 1px solid rgba(64, 64, 64, .8);
+    /*border: none;*/
     font-size: 1.2em;
     line-height: 1.2em;
     white-space: pre-wrap;
