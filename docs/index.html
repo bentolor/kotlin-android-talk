@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="css/theme/white.css">
 
     <!-- Theme used for syntax highlighting of code -->
-    <link rel="stylesheet" href="lib/css/github.css">
+    <link rel="stylesheet" href="lib/css/solarized-light.css">
 
     <!-- Custom, overriding CSS -->
     <link rel="stylesheet" href="css/custom.css">
@@ -53,7 +53,7 @@
                 2016-08-22
             </div>
 
-            <div class="profile" style="position: absolute; top: 0px; left: 900px;">
+            <div class="profile" style="position: absolute; top: 0; left: 900px;">
                 <div class="profile-sidebar">
                     <div class="profile-userpic">
                         <img data-src="img/BenjaminSchmid.jpg" class="img-responsive" alt="">
@@ -84,6 +84,7 @@
             </div>
 
             <div id="licence">
+                <!--suppress HtmlUnknownAttribute -->
                 <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/InteractiveResource"
                       property="dct:title" rel="dct:type">
                     Kotlin für die moderne Android-Entwicklung
@@ -114,7 +115,7 @@
                 <div data-markdown class="abs">
                     ## Was ist Kotlin?
                 </div>
-                <div class="fragment abs" style="right: 0px; top: 620px; text-align: right">
+                <div class="fragment abs" style="right: 0; top: 620px; text-align: right">
                     <p class="large"><b>Russische Insel</b></p>
                     <p class="decent x-small">im finnischen Golf, 32km vor Petersburg</p>
                 </div>
@@ -134,7 +135,7 @@
 
                     ## Sicherheit
 
-                    ## Ausdruckstärke
+                    ## Ausdruckstärke <!-- Lesbarkeit -->
 
                     ## Interoperabilität
 
@@ -165,16 +166,342 @@
         -->
 
         <section>
-            <section>
+
+            <section class="center">
                 <h1>Hello Kotlin!</h1>
             </section>
+
+            <section>
+                <h4>Im Browser mitmachen & ausprobieren</h4>
+                <img data-src="img/try-kotlin.png" style="width: 100%"
+                     alt="Kotlin Koans">
+                <a href="http://try.kotl.in/"><b>http://try.kotl.in/</b></a>
+            </section>
+
+            <section>
+                <h4>Android Studio: Plugin installieren</h4>
+                <img data-src="img/install-kotlin-plugin.png"
+                     alt="Kotlin Plugin installieren">
+            </section>
+
+            <section>
+                <h4>Kotlin im Projekt aktivieren</h4>
+                <img src="img/project-enable-kotlin.png" style="width: 80%"
+                     alt="Kotlin Koans">
+            </section>
+
+            <section>
+                <h3>Kotlin in Action [1]</h3>
+                <pre style="width: 80%; margin: 40px 0 0 -40px"><code>import java.util.*
+
+fun main(args: Array&lt;String&gt;) {
+    val name = if (args.size > 0) args[0] else "Publikum"
+    val zuschauer = Gast(name, title = Title.wertes)
+
+    println(zuschauer)
+    println("Hallo ${zuschauer.title} ${zuschauer.name}")
+}
+
+data class Gast(val name: String, var zeit: Date = Date(),
+                val title: Title?)
+enum class Title { Herr, Frau, wertes }                </code></pre>
+                <div class="abs" style="top: 112px; left: 964px; width: 30%">
+                    <p style="text-align: left; line-height: 1em; font-size: 82%">
+                        <span class="fragment">&leftarrow; Optionale&nbsp;Semikolons<br></span>
+                        <br>
+                        <span class="fragment">&leftarrow; Top-level function<br></span>
+                        <!--&leftarrow; <code>if</code> als Ausdruck<br>--><br/>
+                        <span class="fragment">&leftarrow; Type inference &amp;<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;optional/named Params</span>
+                        <br>
+                        <br>
+                        <span class="fragment">&leftarrow; Expressions im String<br></span>
+                        <br>
+                        <br>
+                        <span class="fragment">&leftarrow; Data Class <br></span>
+                        <span class="fragment">&leftarrow; <code>val</code> vs. <code>var</code> <br></span>
+                    </p>
+                </div>
+            </section>
+
         </section>
+
+
+        <!--
+          === Kotlin & Android ====================================================================
+        -->
+        <section>
+            <section>
+                <h1>Kotlin & Android</h1>
+            </section>
+        </section>
+
+
+        <!--
+          === Prägnanz ============================================================================
+        -->
+        <section>
+            <section>
+                <h1>Prägnanz</h1>
+            </section>
+
+
+            <section class="left">
+                <h2>Prägnanz – Die Basics</h2>
+                <div class="twocol">
+                    <h6>Type inference</h6>
+                    <p>Typangabe üblichweise nur an Schnittstellen</p>
+
+                    <h6>Konstrukte</h6>
+                    <p data-markdown> `;` optional, kein `new`,    <!-- -->
+                        Default: `public`, `data class`</p>
+
+                    <h6>Keywords</h6>
+                    <p data-markdown> `fun`, `Int`, `val`, …</p>
+                </div>
+                <div class="twocol">
+                    <h6>Ausdrücke</h6>
+                    <p data-markdown> `if`…`else` ist ein Ausdruck,     <!-- -->
+                        String Templates, `listOf(…)`, …</p>
+
+                    <h6>Konventionen</h6>
+                    <p data-markdown></p>
+
+                </div>
+            </section>
+
+            <section>
+                <h3>Data Classes – Kotlin</h3>
+                <div data-markdown class="twocol" style="padding: 30px 0;">
+                    ```
+                    data class Gast(
+                        val name: String,
+                        var zeit: Date = Date(),
+                        val title: Title?
+                    )
+                    ```
+                </div>
+                <div data-markdown class="twocol left">
+                    ##### Werte-Container
+                    - Um Methoden erweiterbar
+                    - Vererbung ab Kotlin 1.1
+
+                    ##### Kotlin übernimmt
+                    - Getter & Setter
+                    - `equals()` und `hashCode()`
+                    - `toString()`
+                    - `copy()` für Varianten
+                    - Komfort: `componentN()`
+                </div>
+            </section>
+
+            <section>
+                <h3>... währenddessen im Java-Land</h3>
+
+
+                <div class="threecol">
+                    <pre class="xx-small"><code>public final class Gast {
+  @NotNull
+  private final String name;
+  @NotNull
+  private Date zeit;
+  @Nullable
+  private final Title title;
+
+  @NotNull
+  public final String getName() {
+    return this.name;
+  }
+
+  @NotNull
+  public final Date getZeit() {
+    return this.zeit;
+  }
+
+  public final void setZeit(@NotNull Date date) {
+    checkParameterIsNotNull(date, "&lt;set-?&gt;");
+    this.zeit = date;
+  }
+
+  @Nullable
+  public final Title getTitle() {
+    return this.title;
+  }
+
+  public Gast(@NotNull String name,
+              @NotNull Date zeit,
+              @Nullable Title title) {
+    checkParameterIsNotNull(name, "name");
+    checkParameterIsNotNull(zeit, "zeit");
+    this.name = name;
+    this.zeit = zeit;
+    this.title = title;
+  }></code></pre>
+                </div>
+                <div class="threecol">
+                    <pre class="xx-small"><code>  public Gast(String string, Date date,
+              Title title, int n) {
+    if ((n & 2) != 0) {
+      date = new Date();
+    }
+    this(string, date, title);
+  }
+
+  @NotNull
+  public final String component1() {
+    return this.name;
+  }
+
+  @NotNull
+  public final Date component2() {
+    return this.zeit;
+  }
+
+  @Nullable
+  public final Title component3() {
+    return this.title;
+  }
+
+  @NotNull
+  public final Gast copy(@NotNull String name,
+                         @NotNull Date zeit,
+                         @Nullable Title title) {
+    checkParameterIsNotNull(name, "name");
+    checkParameterIsNotNull(zeit, "zeit");
+    return new Gast(name, zeit, title);
+  }
+
+  public String toString() {
+    return "Gast(name=" + this.name +
+           ", zeit=" + this.zeit +
+           ", title=" + this.title + ")";
+  }
+</code></pre>
+                </div>
+                <div class="threecol">
+                    <pre class="xx-small"><code>  public int hashCode() {
+    String s = this.name;
+    Date d = this.zeit;
+    Title t = this.title;
+    return ((s != null ? s.hashCode() : 0) * 31
+          + (d != null ? d.hashCode() : 0)) * 31
+          + (t != null ? t.hashCode() : 0);
+  }
+
+  public boolean equals(Object object) {
+    if (this == object) return true;
+
+    if (!(object instanceof Gast))
+        return false;
+
+    Gast gast = (Gast)object;
+    if (!areEqual(this.name, gast.name)
+        || !areEqual(this.zeit, gast.zeit)
+        || !areEqual(this.title, gast.title))
+        return false;
+
+    return true;
+  }
+}</code></pre>
+                    <p class="decent">Übersichtlich, nein?</p>
+                </div>
+            </section>
+
+            <section>
+                <h2>Lesbarkeit</h2>
+                <div data-markdown>
+                    - Kotlin Code in der Regel wesentlich prägnanter, dennoch intuitiv lesbar: Sinn erschliesst sich leicht
+                    - Gutes Tooling führt beim Entwickeln
+
+                    Beispiel:
+                    <!-- @formatter:off -->
+                    ```
+                    val list = listOf("a", "b", "c")
+                    for (index in list.indices) {
+                        println("$index -> ${list[index]}")
+                    }                    }
+                    ```
+                    <!-- @formatter:on -->
+
+                    Beispiel:
+                    <!-- @formatter:off -->
+                    ```
+                    List<String> list = Arrays.asList("a","b","c");
+                    for (int index = 0; index < list.size(); index++) {
+                        System.out.println(index + " -> " + list.get(index));
+                    }
+                    ```
+                    <!-- @formatter:on -->
+                </div>
+            </section>
+
+        </section>
+
+
+
+        <!--
+          === Sicherheit ==========================================================================
+        -->
+        <section>
+            <section>
+                <h1>Sicherheit</h1>
+            </section>
+
+            <section>
+                <h2>Safety</h2>
+
+                - Null-reference: billion-dollar mistake!
+                - Mutable by default
+                - Stronger typesystem
+
+            </section>
+        </section>
+
+
+
+        <!--
+          === Ausdrucksstärke =====================================================================
+        -->
+        <section>
+            <section>
+                <h1>Ausdrucksstärke & Lesbarkeit</h1>
+            </section>
+
+            <section>
+                <h2>Ausdrucksstärke</h2>
+            </section>
+        </section>
+
+
+
+        <!--
+          === Interoperabilität ==================================================================
+        -->
+        <section>
+            <section>
+                <h1>Interoperabilität</h1>
+            </section>
+
+            <section>
+                <h2>Interoperabilität</h2>
+            </section>
+        </section>
+
 
         <!--
           === Tooling =============================================================================
         -->
-
         <section>
+            <section>
+                <h1>Tooling</h1>
+            </section>
+
+            <section>
+                <div data-markdown>
+                    ##### Convert to Kotlin
+                    ...
+                </div>
+            </section>
 
             <section>
                 <div data-markdown>
@@ -182,8 +509,9 @@
                         ##### `lateinit`
                         ```
                         lateinit var name: String
-                        var age: Int by Delegates.notNull<String>()
-                        ```
+                        var age: Int by Delegates.notNull
+                        <String>()
+                            ```
                     </script>
                 </div>
             </section>
@@ -332,292 +660,58 @@
                     </script>
                 </div>
             </section>
-
-
-            <section>
-                <h3>HTML5 Javadoc example output</h3>
-            </section>
-
-
-            <section>
-                <div data-markdown style="width: 60%; margin: 0 auto;">
-                    <script type="text/template">
-                        ### Cross compiling
-                        #### and the `javac -release` flag
-                        ````
-                        javac - release N
-                        ````
-                        <!-- .element: class="small" -->
-
-                        ...is equivalent to
-
-                        ````
-                        javac -source N -target N –bootclasspath rtN.jar ...
-                        ````
-                        <!-- .element: class="small" -->
-                    </script>
-                </div>
-            </section>
-
-
-        </section>
-
-
-        <section>
-
-
-            <section>
-                <div data-markdown>
-                    ### Process Control
-                    ````java
-                    <pre>// Get PIDs of own or started processes
-                    out.println("Your pid is " + ProcessHandle.current().getPid());
-
-                    Process p = Runtime.getRuntime().exec("sleep 1h");
-                    ProcessHandle h = ProcessHandle.of(p.getPid())  // Optional
-                            .orElseThrow(IllegalStateException::new);
-
-                    // Do things on exiting process          // CompletableFuture
-                    h.onExit().thenRun( ()-&gt; out.println("Sleeper exited") );
-
-                    // Get info on process
-                    out.printf("[%d] %s - %s\n", h.getPid(),
-                               h.info().user().orElse("unknown"),
-                               h.info().commandLine().orElse("none"));
-
-                    // Kill a process
-                    h.destroy();</pre>
-                    ````
-                </div>
-            </section>
-
-            <section>
-                <div data-markdown>
-                    ### Immutable Collection Factories
-                    ````java
-                    <pre>/* Comment sections would break ... */
-                    List&lt;Integer&gt; listOfNumbers = List.of(1, 2, 3, 4, 5/*, null*/);
-
-                    Set&lt;Integer&gt; setOfNumbers = Set.of(1, 2, 3, 4, 5/*, 1*/);
-
-                    Map&lt;String, String&gt; mapOfString =
-                        Map.of("key1", "value1", "key2", "value2");
-
-                    Map&lt;String, String&gt; moreMapOfString =
-                        Map.ofEntries(
-                            Map.entry("key1", "value1"),
-                            Map.entry("key2", "value2")/*,
-                            Map.entry("key1", "value3")*/
-                    );
-                    ````
-                    </pre>
-                </div>
-            </section>
-
-            <section>
-                <div data-markdown>
-                    ### StackWalker
-                    ````java
-                    <pre>// return class/method only for our classes.
-                    private static List&lt;String&gt; walkAndFilterStackframe() {
-                      return StackWalker.getInstance().walk(s -&gt;
-                        s.map( frame-&gt; frame.getClassName()+"/"+frame.getMethodName())
-                               .filter(name -&gt; name.startsWith("de.exxcellent"))
-                               .limit(10)
-                               .collect(Collectors.toList()) );
-                    }</pre>
-                    ````
-                </div>
-            </section>
-
-            <section>
-                <div data-markdown>
-                    ### New Input Stream Utilities
-                    ````java
-                    <pre>// All bytes from an InputStream at once
-                    byte[] result = new ByteArrayInputStream(buf)
-                        .readAllBytes();
-
-                    // Directly redirect an InputStream to an OutputStream
-                    new ByteArrayInputStream(buf)
-                        .transferTo(System.out);</pre>
-                    ````
-                </div>
-            </section>
-
         </section>
 
 
         <!--
-          === Details =============================================================================
+          === Die Praxis =========================================================================
         -->
         <section>
-
-
             <section>
-                <div data-markdown>
-                    # Jigsaw
-                </div>
+                <h1>Die Praxis</h1>
             </section>
 
             <section>
-                <div data-markdown>
-                    <script type="text/template">
-                        ## Jigsaw [JEP 201](http://openjdk.java.net/jeps/201)<!-- .element: class="jep" -->
-
-                        > Modules bundle together one or more packages
-                        > and offer stronger encapsulation than jars
-
-                        - Allow **scaled down runtime JAR**  &rarr; IoT
-                        - **Stronger:** In a module: `public` is no longer public to others
-                        - _Sad:_ No module versioning
-
-                    </script>
-                </div>
+                <h2>Interoperabilität</h2>
             </section>
-
-
-            <section>
-                <div data-markdown>
-                    <script type="text/template">
-                        ### How it works (1)
-                        `module-info.java` files declare dependencies
-
-                        ```java
-                        module com.mysql.jdbc {
-                        // Module dependency
-                        requires java.sql;
-
-                        // exported package in module
-                        exports com.mysql.jdbc;
-
-                        // Implements service with instance
-                        provides java.sql.Driver with com.mysql.jdbc.Driver;
-                        }
-                        ```
-                    </script>
-                </div>
-            </section>
-
-
-            <section>
-                <div data-markdown class="container">
-                    <script type="text/template">
-                        ### How it works (2)
-                        ##### Changes to `javac` and `java` to use modules instead of JARs
-                        ````
-                        javac -mp modulepath ...
-                        java  -mp modulepath -m modulename/moduleclass
-                        ````
-
-                        ##### Linker
-                        `jlink` can be used to link a set of modules, along with their transitive dependences,
-                        to create a custom modular run-time image
-
-                    </script>
-                </div>
-            </section>
-
-
-            <section>
-                <div data-markdown>
-                    <script type="text/template">
-                        ### `ServiceLoader` using modules (1)
-                        ````
-                        public abstract class BillingService {
-
-                        }
-                        ````
-                    </script>
-                </div>
-            </section>
-
-            <section>
-                <div data-markdown style="font-size: .9em;">
-                    <script type="text/template">
-                        ### `ServiceLoader` using modules (2)
-                        ````java
-                        module anothermodule {
-                        exports de.exxcellent.anothermodule;
-                        requires de.exxcellent.java9;
-
-                        // Provide Service instance (SPI with Jigsaw modules)
-                        provides de.exxcellent.java9.jigsaw.spi.BillingServiceProvider
-                        with de.exxcellent.anothermodule.spi.MastercardBillingServiceProvider;
-                        }
-                        ````
-                    </script>
-                </div>
-            </section>
-
-
-            <section>
-                <div data-markdown>
-                    <script type="text/template">
-                        ### How it works (3)
-                        ````
-                        $ mkdir -p target/module/de.exxcellent.java9
-                        $ mkdir -p target/module/anothermodule
-
-                        $ javac $(find playground/src/main/java -name "*.java") \
-                        -d target/module/de.exxcellent.java9
-                        $ javac $(find playground-dependent/src/main/java -name "*.java")\
-                        -d target/module/anothermodule \
-                        -modulepath target/module
-
-                        $ java  -modulepath target/module \
-                        -m anothermodule/de.exxcellent.anothermodule.TestJigsawSPI
-                        Mastercard billed the money!
-
-                        ````
-                    </script>
-                </div>
-            </section>
-
-
-            <section>
-                <div class="container">
-                    <div data-markdown>
-                        ### Tools
-                        - List built-in modules: `java –listmods`
-                        - Find dependencies: `jdeps –jdkinternals app.jar`
-                    </div>
-                    <div data-markdown style="margin-top: 60px;">
-                        ### Ressources
-                        - [JVM Module Summary](http://cr.openjdk.java.net/~mr/jigsaw/ea/module-summary.html)
-                        - [The State of the Module System](http://openjdk.java.net/projects/jigsaw/spec/sotms/)
-                    </div>
-                </div>
-            </section>
-
-
         </section>
 
 
+        <!--
+          === Fazit ==== =========================================================================
+        -->
         <section>
             <section>
-                <div class="small">
-                    <div data-markdown>
-                        ## Quellen
-                    </div>
+                <h1>Fazit></h1>
+            </section>
 
-                    <div class="twocol" data-markdown>
-                        <script type="text/template">
-                            ##### Bilder
-                            - [Kotlin Islands Maps](https://commons.wikimedia.org/wiki/File:Kotlin_Island_1706.png)
+            <section>
+                <h2>Fazit</h2>
+            </section>
 
-                        </script>
-                    </div>
 
-                    <div class="twocol" data-markdown>
-                        <script type="text/template">
-                        </script>
-                    </div>
+            <section class="small">
+                <div data-markdown>
+                    ## Quellen
+                </div>
 
+                <div class="threecol small" data-markdown>
+                    ##### Materialien für den Einstieg
+
+                </div>
+
+                <div class="threecol small" data-markdown>
+                    ##### Frameworks
+                </div>
+
+                <div class="threecol small" data-markdown>
+                    ##### Bildnachweis
+                    - [Kotlin Islands Maps](https://commons.wikimedia.org/wiki/File:Kotlin_Island_1706.png)
                 </div>
             </section>
 
         </section>
+
     </div>
 </div>
 

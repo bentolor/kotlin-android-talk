@@ -26,6 +26,11 @@
 - `it` für lambdass
 - `AhaLab.get(activity)` -> `AhaLab[activity]`
 
+=== Features
+
+- Functions as Values
+- Extensions
+
 === Idiome
 - if = Ausdruck
   ```
@@ -35,6 +40,10 @@
 - `use()` (Ersatz von java `try-with`)
 
 == Android & Kotlin
+
+- Kotlin has a rather small runtime file size: the library is approximately 736KB (as of 1.0.3). This means Kotlin adds just a little to .apk file size.
+
+- Wer live mitprobieren möchte:  http://try.kotlinlang.org/koans
 
 === Beispiel #1 : Data Class
 siehe Aha!
