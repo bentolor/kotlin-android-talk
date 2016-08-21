@@ -629,36 +629,35 @@ for (index in list.indices) {
     return true;
   }
 }</code></pre>
-                    <p class="decent">Übersichtlich, nein?</p>
+                    <p class="decent">… 3 Attribute!</p>
                 </div>
             </section>
 
             <section>
-                <h2>Idiome</h2>
+                <h3>Idiome</h3>
 
-                <h6>if = Ausdruck</h6>
-                ```
-                fun isEven(i: Int) = if (i.mod(2) == 0) "gerade" else "ungerade"
-                ```
-
-                <h6>with( … ) { }</h6>
-                `this` im Block = Parameters von `with()`
                 <!-- @formatter:off -->
-                ```
-                private fun toJSON(aha: Aha): JSONObject {
-                    with(JSONObject()) {
-                        put(JSON_ID, aha.id.toString())
-                        put(JSON_TITLE, aha.title)
-                        put(JSON_USEFUL, aha.isUseful)
-                        return this
+                <div data-markdown class="left" style="width: 90%; margin: 0 auto">
+                    ##### `if` ist ein Ausdruck
+                    ```
+                    fun isEven(i: Int) = if (i.mod(2) == 0) "gerade" else "ungerade"
+                    ```
+
+                    ##### `with( … ) { }`: Parameter wird im Block zum `this`
+                    ```
+                    private fun toJSON(aha: Aha): JSONObject {
+                        with(JSONObject()) {
+                            put(JSON_ID, aha.id.toString())
+                            put(JSON_TITLE, aha.title)
+                            put(JSON_USEFUL, aha.isUseful)
+                            return this
+                        }
                     }
-                }
-                ```
+                    ```
+                    Varianten: `apply()`, `let()` und `use()` als `try-with`-Equivalent
+                </div>
                 <!-- @formatter:on -->
 
-                <b>Varianten:</b> apply() und let()
-
-                <h6>`use()` (Ersatz von java `try-with`)</h6>
             </section>
 
         </section>
@@ -675,41 +674,94 @@ for (index in list.indices) {
             <section>
                 <h2>Properties</h2>
                 <div>
-                    Klassen in Kotlin kennen keine Felder, nur Properties
                     <ul>
-                        <li class="tgap">Compiler generiert Getter- &amp; Setter-Methoden sowie backing field</li>
+                        <li> Klassen in Kotlin kennen keine Felder, nur Properties</li>
+
+                        <li class="tgap">Compiler <strong>generiert</strong>
+                            Getter- &amp; Setter-Methoden sowie backing field
+                        </li>
+
                         <li class="tgap"><img src="img/intent-properties.png"
-                                 alt="Properties of Android Intent class"
-                                 style="float: right; margin: 12px 32px">
-                            Auch <code>getX()</code>/<code>setX()</code>-Paare aus Java-Code erscheinen als Properties
+                                              alt="Properties of Android Intent class"
+                                              style="float: right; margin: 12px 32px">
+                            Auch <code>getX()</code>/<code>setX()</code>-Paare
+                            <br>aus <strong>Java-Code</strong> erscheinen als <strong>Properties</strong>
 
                         </li>
-                        <li class="tgap">Properties erlauben Delegation wie <code>by lazy { … }</code> und <code>by Delegates.notNull() </code></li>
+                        <li class="tgap">Properties erlauben <em>Delegation</em> wie <code>by
+                            Delegates.notNull()</code> und <code>by lazy { … }</code></li>
                     </ul>
-                </div>
-            </section>
-
-            <section>
-                <h2>Android: Virtual Properties</h2>
-                <div data-markdown>
-                </div>
-            </section>
-
-            <section>
-                <h2>Functions as first-class members</h2>
-
-                - Functions as Values
-                - Extension methods & Receiver
-                - Inline -> Macro
-            </section>
-
-
-            <section>
-                <h2>Lambda-Ausdrücke</h2>
-
-                <div data-markdown>
                     <!-- @formatter:off -->
-                    ```
+                    <div data-markdown>
+                        ```
+                        val imm: InputMethodManager by lazy {
+                            getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
+                        }
+                        ```
+                    </div>
+                    <!-- @formatter:on -->
+
+                </div>
+            </section>
+
+            <section class="left">
+                <h3>Automatische Properties für UI-Elemente</h3>
+                <div class="small">
+                    <p>Wer kennt sie nicht: Stetige <code>findViewById()</code>-Aufrufe …
+                </div>
+
+                <pre><code class="java">EditText mTitleField = (EditText) v.findViewById(R.id.aha_title);
+mTitleField.setText(mAha.getTitle());
+
+CheckBox usefulBox = (CheckBox) v.findViewById(R.id.aha_useful);
+usefulBox.setChecked(mAha.isUseful());</code></pre>
+                <div class="small">
+                    <p>Die <em>Kotlin Android Extensions</em> bieten
+                        automatische Extension-Properties. <br><i>Ohne zusätzlichen Code, Annotations</i>
+                        oder <i>Runtime!</i>
+                    <p>
+                        Ein einfacher Import macht daraus <strong>simple, typsichere Properties für UI-Elemente</strong>:
+                </div>
+                <pre class="kotlin"><code>import kotlinx.android.synthetic.main.fragment_aha.*
+
+aha_title.setText(mAha.title)
+aha_useful.isChecked = mAha.isUseful</code></pre>
+                <!--<p class="small">Cast und Zugriff auf <code>R.id.*</code> entfallen!</p>-->
+            </section>
+
+
+            <!--<section class="center">-->
+                <!--<h2>Funktionen</h2>-->
+            <!--</section>-->
+
+
+            <section class="center">
+                <h2>Funktionen als <br>first-class elements</h2>
+
+                <div class="left" style="width: 80%; margin: 20px auto">
+                    <p>Funktionen sind Sprachelemente erster Klasse und können daher auch
+                        als <em>Variablen, Properties, Parameter</em> und <em>Rück&shy;gabe&shy;werte</em> genutzt werden.</p>
+
+                    <p> Durch Verschachtelung lassen sich
+                        <em>Funktionen höherer Ordnung</em>
+                        <i>(Higher-order functions)</i>
+                        erschaffen
+                    </p>
+                </div>
+            </section>
+
+
+            <section>
+                <div class="container">
+                    <h3>Lambda-Ausdrücke</h3>
+                    <p class="small left">… sind anonyme Funktionsausdrücke, die an andere Funktionen <br>
+                        übergeben werden können
+                        <span class="decent">(z.B. Bibliotheksfunktionen wie <code>filter()</code>)</span>
+                    </p>
+
+                    <!-- @formatter:off -->
+                    <div data-markdown style="width: 560px; float: left; margin: 0 0px 0 -32px">
+                        ```
                         public Aha getAha(UUID id) {
                             for (Aha c : mAhas) {
                                 if (c.getId().equals(id))
@@ -717,65 +769,124 @@ for (index in list.indices) {
                             }
                             return null;
                         }
-                    ```
+                        ```
+                    </div>
                     <!-- @formatter:on -->
 
                     <!-- @formatter:off -->
-                    ```
-                        fun getAha(id: UUID): Aha? = ahas.filter { it.id == id }.firstOrNull()
-                    ```
+                    <div data-markdown style="width: 560px; float: left; ">
+                        ```
+                        fun getAha(id: UUID): Aha?
+                          = ahas.filter { it.id == id }
+                                .firstOrNull()
+                        ```
+                    </div>
                     <!-- @formatter:on -->
 
-
+                    <div data-markdown style="clear: both;" class="small left">
+                        ##### Abkürzungen
+                        - Nur ein Parameter? `x -> …` kann durch `it` ersetzt werden
+                        - Aufruf-Parameter = Lambda? Runde Klammern können entfallen
+                        - wie in Java 8: Lambda erfüllen single abstract method (SAM)
+                    </div>
                     <!-- @formatter:off -->
-                    ```
-                    for (int i = 0; i < mAhas.size(); i++) {
-                    if (mAhas.get(i).getId().equals(ahaId)) {
-                    mViewPager.setCurrentItem(i);
-                    break;
-                    }
-                    }
-                    ```
+                    <div data-markdown style="clear: both;" class="left">
+                        ```
+                        view.setOnClickListener { toast("Hello world!") }
+                        ```
+                    </div>
                     <!-- @formatter:on -->
-
-                    ```
-                    viewPager.currentItem = mAhas.indexOfFirst { it.id == ahaId }
-                    ```
-
-                    - `it` für lambdas
                 </div>
             </section>
 
+
             <section>
-                <h2>Lambda ++</h2>
+                <h3>Einsatz in vielen Bibliotheksfunktionen</h3>
 
-                <h6>repeat</h6>
                 <!-- @formatter:off -->
-                ```
-                println("I will not ...")
-                repeat(3) { println("  ...repeat myself") }
-                ```
-                <!-- @formatter:on -->
+                <div data-markdown="">
+                    ```
+                    println("I will not ...")
+                    repeat(3) { println("  ...repeat myself") }
+                    ```
 
-                How it works:
-                <!-- @formatter:off -->
-                ```
-                public inline fun repeat(times: Int, action: (Int) -> Unit) {
-                    for (index in 0..times - 1) {
-                        action(index)
+                    How it works
+                    ```
+                    public inline fun repeat(times: Int, action: (Int) -> Unit) {
+                        for (index in 0..times - 1) {
+                            action(index)
+                        }
                     }
-                }
+                    ```
 
-                und `repeat(3) { … }` nur eine spezielle Schreibweise für `repeat(3, { … })`
-
-                ```
+                    Als `inline` deklariert: Wirkung wie Makro-Element.  <!-- -->
+                    *Kein Funktionsoverhead!*
+                </div>
                 <!-- @formatter:on -->
-
             </section>
 
 
             <section>
-                <h2>Extension methods</h2>
+                <h3>Higher-order functions – Beispiel</h3>
+
+                <div>
+                <pre style="width: 76%; margin: 0"><code class="kotlin">class FirstClassFunction(
+        val f1: (String) -> Int,
+        val f2: (Int) -> Boolean) {
+
+    fun strToBool(str: String): Boolean {
+        val f: (String) -> Boolean = higherOrderFun()
+        return f(str)
+    }
+
+    private fun higherOrderFun(): (String) -> Boolean {
+        return { x -> f2(f1(x)) }
+    }
+}
+
+fun main(args: Array&lt;String&gt;) {
+    val c = FirstClassFunction(
+                Integer::parseInt,
+                { it % 2 == 0 }
+            )
+    val strings = listOf("2", "7", "8")
+    println(strings.filter(c::strToBool))
+}</code></pre>
+                </div>
+
+                <div class="abs" style="top: 100px; left: 954px; width: 30%">
+                    <p style="text-align: left; line-height: .83em; font-size: .8em">
+                        &nbsp;<br>
+                        <span class="fragment">&leftarrow; Funktion als <em>Parameter</em><br></span>
+                        &nbsp;<br>
+                        &nbsp;<br>
+                        &nbsp;<br>
+                        <span class="fragment">&leftarrow; Funktion als <em>Variable</em><br>
+                        &nbsp;<br>
+                        &nbsp;<br>
+                        &nbsp;<br>
+                        <span class="fragment">&leftarrow; Funk. als <em>Rückgabewert</em></span><br>
+                        <span class="fragment">&leftarrow; <em>Kombination</em> via <em>Lambda</em></span><br>
+                        <br></span>
+                        <br></span>
+                        &nbsp;<br>
+                        &nbsp;<br>
+                        &nbsp;<br>
+                        <span class="fragment">&leftarrow; Funk.-<em>Referenz</em> </span><br>
+                        <span class="fragment">&leftarrow; <em>Lambda</em>-Ausdruck</span><br>
+                        &nbsp;<br>
+                        &nbsp;<br>
+                        <span class="fragment">&rightarrow; Quiz: Was kommt raus?</span><br>
+                        <br>
+                    </p>
+                </div>
+            </section>
+
+
+
+
+            <section>
+                <h3>Extension methods</h3>
 
                 <div data-markdown>
                     - ermöglicht die Erweiterung fremder Klassen um "statische" Methoden
@@ -783,88 +894,110 @@ for (index in list.indices) {
 
                     <!-- @formatter:off -->
                     ```
-                    TODO : Bsp
+                    fun Fragment.toast(message: String, duration: Int = Toast.LENGTH_SHORT) {
+                      Toast.makeText(getActivity(), message, duration).show()
+                    }
+
+                    fragment.toast("Hello world!")
                     ```
                     <!-- @formatter:on -->
                 </div>
-
-
             </section>
 
 
             <section>
-                <h2>Konventionen</h2>
+                <h3>Konventionen - Operatoren</h3>
 
-                <h6>destructuring</h6>
-
-                <h6>Operatoren</h6>
                 <div data-markdown>
-                    - `.rangeTo()`, `.plus()`,`minus()`, ...
-                    - Feste Menge & Reihenfolge (vs. Scala)
-                    - - `AhaLab.get(activity)` -> `AhaLab[activity]`
+                    Feste Menge & Reihenfolge an Operatoren (vs. Scala).  <!-- -->
+                    Diese werden über Namenskonventionen gemapped:
 
-                    - TESTEN: Mit Infix notation
+                    `+` &rightarrow; `.plus()`
 
-                    They are member functions or extension functions
-                    They have a single parameter
-                    They are marked with the infix keyword
+                    `-` &rightarrow; `minus()`
+
+                    `..` &rightarrow; `.rangeTo()`
+
+                    `[x]` &rightarrow; `get(x)`
+                </div>
+            </section>
 
 
-                    ```
-                    // Define extension to Int
+            <section>
+                <h3>Infix Notation</h3>
+
+                <div data-markdown class="container">
+                    - Sind Member-Funktionen oder Extension Methods
+                    - Haben einen einzigen Parameter
+                    - Und sind mit dem `infix` Schlüsselwort markiert
+
+                    ```kotlin
                     infix fun Int.shl(x: Int): Int {
-                    ...
+                        …
                     }
 
-                    // call extension function using infix notation
-
+                    // Aufruf möglich als
                     1 shl 2
 
-                    // is the same as
-
+                    // als Equivalent zu
                     1.shl(2)
-                    ```
-
-
-                    ```
-                    for (int i = 0; i < count; i++) { … }
-                    for (i in 0..count - 1) { … }
                     ```
                 </div>
             </section>
 
+
             <section>
-                <h2>Type-safe DSL über Lambdas mit „Empfänger“-Objekt</h2>
-                <pre><code>fun &lt;T, R&gt; with(rec: T, block: T.() -> R): R = rec.block() </code></pre>
-                Extrem mächtig. Erlaubt DSLs
+                <h3>Typsichere DSLs über „Empfänger“-Objekt</h3>
+
+                <p class="small left">Es ist möglich, Funktionssignaturen zu definieren, die Lambda-Ausdrücke
+                    erwarten bei denen <code>this</code> auf Zielobjekte eines bestimmten Typs zeigen. <br>
+                    Darüber sind typsichere DSLs möglich:
+                </p>
 
                 <!-- @formatter:off -->
-                ```
-class HTML {
-    fun body() { ... }
-}
+                <div data-markdown style="width: 52%; margin: 0">
+                    ```kotlin
+                    class HTML {
+                        fun body() { ... }
+                    }
 
-fun html(init: HTML.() -> Unit): HTML {
-  val html = HTML()  // create the receiver object
-  html.init()        // pass the receiver object to the lambda
-  return html
-}
+                    fun html(init: HTML.() -> Unit): HTML {
+                      val html = HTML()
+                      html.init()
+                      return html
+                    }
 
-
-html {       // lambda with receiver begins here
-    body()   // calling a method on the receiver object
-}
-                ```
+                    html {
+                        body()
+                    }
+                    ```
+                </div>
                 <!-- @formatter:on -->
+
+
+                <div class="abs" style="top: 260px; left: 610px; width: 60%">
+                    <p style="text-align: left; line-height: .83em; font-size: .8em">
+                        &nbsp;<br>
+                        &nbsp;<br>
+                        &nbsp;<br>
+                        &nbsp;<br>
+                        <span class="fragment">&leftarrow; Erwarte Funktion mit <code>this</code>
+                            vom Typ <code>HTML</code></span><br>
+                        <span class="fragment">&leftarrow; „Empfängerobjekt“</span><br>
+                        <span class="fragment">&leftarrow; Führe Lambda auf „Empfängerobjekt“ aus</span><br>
+                        <br>
+                        <br>
+                        <br>
+                        <span class="fragment">&leftarrow; Kurzform von <code>html({…})</code></span><br>
+                        <span class="fragment">&leftarrow; <em>Lambda</em>-Ausdruck <code>HTML</code>-„Empfänger“</span><br>
+                    </p>
+                </div>
 
             </section>
 
             <section>
-                <h2>Type-safe DSL</h2>
                 <div data-markdown>
-                    ##### Anko
-
-                    - DSL für GUI
+                    ### Anko: Android-DSL für XML
                 </div>
             </section>
         </section>
@@ -910,48 +1043,6 @@ html {       // lambda with receiver begins here
                 <div data-markdown>
                     ##### Convert to Kotlin
                     ...
-                </div>
-            </section>
-
-            <section>
-                <div data-markdown>
-                    ##### Android Extension
-
-                    Synthetische Properties
-
-                    Aus
-                    ```
-                    CheckBox usefulBox = (CheckBox) v.findViewById(R.id.aha_useful);
-                    // bzw.
-                    val usefulBox = v.findViewById(R.id.aha_useful) as CheckBox
-                    ```
-                    wird
-
-                    ```
-                    import kotlinx.android.synthetic.main.fragment_aha.*
-
-                    aha_useful.isChecked = mAha!!.isUseful
-                    ```
-                    Wegfall von Cast. Wegfall von R.id
-
-                    Nachteil: Tut für Fragments nur in `onViewCreated`, da `getView().`
-
-                    > When you access btn_K, it calls for getView().findViewById(R.id.btn_K).
-
-                    ...
-                </div>
-            </section>
-
-            <section>
-                <div data-markdown>
-                    ##### `lateinit`
-                    <!-- @formatter:off -->
-                    ```
-                    val imm: InputMethodManager by lazy {
-                    getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
-                    }
-                    ```
-                    <!-- @formatter:on -->
                 </div>
             </section>
 
@@ -1106,7 +1197,7 @@ html {       // lambda with receiver begins here
 
                 <div class="threecol small" data-markdown>
                     ##### Frameworks
-
+                    - [Awesome Kotlin](http://kotlin.link/) Ressourcen-Verzeichnis
                     https://kotlinlang.org/docs/resources.html
                 </div>
 

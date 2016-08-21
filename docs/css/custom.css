@@ -175,8 +175,12 @@
     font-size: 124%;
 }
 
-.reveal .small p, .reveal .small li, .reveal div.small,.reveal span.small, .reveal .small code, .reveal .small {
+.reveal .small li, .reveal div.small,.reveal span.small, .reveal .small code, .reveal .small {
     font-size: 86%;
+}
+
+.reveal .small code {
+    font-size: 72%;
 }
 
 .reveal .x-small p,.reveal  .x-small li,.reveal p.x-small,.reveal span.x-small, .reveal  div.x-small {
@@ -187,7 +191,7 @@
     font-size: 64%;
 }
 
-.reveal pre.xx-small {
+.reveal pre.xx-small, .reveal pre.x-small, .reveal pre.small {
     width: 100%; margin: 0;
 }
 .reveal .xx-small code {
@@ -241,7 +245,7 @@
 }
 
 .reveal .handwritten {
-    font-family: Zeyada, sans-serif;
+    font-family: Zeyada, cursive;
     font-size: 1.4em;
     line-height: .9em;
     color: rgba(0, 0, 205, .7);
