@@ -1,6 +1,6 @@
 @import url(https://fonts.googleapis.com/css?family=Montserrat:400,700|Montserrat+Alternates);
 @import url(https://fonts.googleapis.com/css?family=Rajdhani:400,700,600,500,300);
-
+@import 'https://fonts.googleapis.com/css?family=Zeyada';
 
 /* Absatzabstand */
 .reveal p {
@@ -10,8 +10,8 @@
     margin: 0;
 }
 
-.reveal p.subline {
-    margin: -0.2em 0 .6em 0;
+.reveal .subline {
+    margin: -0.2em 0 .4em 0;
     line-height: 0.92;
 }
 
@@ -25,7 +25,7 @@
 
 
 
-/* Decent regular text, emphasize strongs .*/
+/* Decent regular text.*/
 .reveal {
     color: #333;
     font-family: 'Rajdhani', sans-serif;
@@ -39,9 +39,23 @@
 .reveal strong, .reveal h1, .reveal h2 {
     color: #000;
     margin: 0 0 .6em 0;
-    font-weight: 700;
+    font-weight: 600;
     letter-spacing: -0.03em;
+    /*color: #1b91ff;*/
 }
+
+.reveal EM {
+    margin: 0 0 .6em 0;
+    font-weight: 600;
+    letter-spacing: -0.03em;
+    color: #1b91ff;
+    font-style: normal;
+}
+
+.reveal .emphasize {
+    color: #1b91ff !important;
+}
+
 
 /* Prägnantere Überschriften-Font. */
 .reveal h1,
@@ -161,7 +175,7 @@
     font-size: 124%;
 }
 
-.reveal .small p, .reveal  .small li,.reveal  p.small,.reveal  div.small,.reveal  span.small,.reveal  .small code, .reveal .small {
+.reveal .small p, .reveal .small li, .reveal div.small,.reveal span.small, .reveal .small code, .reveal .small {
     font-size: 86%;
 }
 
@@ -184,11 +198,6 @@
 
 /* --- Darstellung Tweaks ----------------------------------------------- */
 
-/* Farbliche Hervorhebung */
-.reveal .emphasize {
-    color: #1b91ff !important;
-}
-
 /* Kein max height für Codeblöcke */
 .reveal pre code {
     max-height: none;
@@ -202,19 +211,40 @@
     box-shadow: none;
 }
 
+/* Hand-written arrows, colorized
+.reveal img.arrow {
+    margin: 0;
+    background: none;
+    border: none;
+    box-shadow: none;
+    -webkit-filter: invert(100%) hue-rotate(180deg) saturate(255); filter: invert(100%)  hue-rotate(180deg) saturate(255);
+}*/
+
+
 /* Top & bottom gaps */
-.tgap {
-    margin-top: .8em !important;
+.reveal .tgap {
+    margin-top: .8em;
 }
 
-.bgap {
-    margin-bottom: .8em !important;
+.reveal .lgap {
+    margin-left: .8em;
+}
+
+.reveal .bgap {
+    margin-bottom: .8em
 }
 
 .reveal .glow {
     text-shadow: 0 0 0.5em #ccc, 0 0 0.5em #ccc;
     -webkit-filter: drop-shadow(0px 0px 30px rgba(255, 255, 255, 1));
     filter: drop-shadow(0px 0px 30px rgba(255, 255, 255, 1));
+}
+
+.reveal .handwritten {
+    font-family: Zeyada, sans-serif;
+    font-size: 1.4em;
+    line-height: .9em;
+    color: rgba(0, 0, 205, .7);
 }
 
 /* Inline code */
@@ -231,8 +261,7 @@
     padding: 20px;
     background-color: rgba(252, 248, 237, 0.8);
     border: 1px solid rgba(64, 64, 64, .8);
-    /*border: none;*/
-    font-size: 1.2em;
+    font-size: 1.0em;
     line-height: 1.2em;
     white-space: pre-wrap;
 }

@@ -5,6 +5,12 @@ fun iterateListByIndex() {
     }
 }
 
+fun repeatBlock() {
+    println("I will not ...")
+    repeat(3) { println("  ...repeat myself") }
+}
+
 fun main(args: Array<String>) {
     iterateListByIndex()
+    repeatBlock()
 }
