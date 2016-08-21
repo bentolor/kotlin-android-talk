@@ -33,6 +33,10 @@
     </script>
 </head>
 <body>
+<img src="img/eXXcellent%20logo-transparent.png" id="exxcellent-logo"
+     alt="eXXcellent solutions GmbH Logo"
+/>
+
 <div class="reveal">
     <div class="slides">
 
@@ -40,12 +44,20 @@
           === Title ===============================================================================
         -->
 
-        <section>
+        <section data-background-color="#fff">
+            <img data-src="img/eXXcellent%20logo-transparent.png"
+                 style="width: 320px; position: absolute; top: 0; left: 0;"
+                 class="plain" alt="eXXcellent solutions GmbH Logo"
+            />
+
             <div style="text-align: left;">
-                <h1 style="margin: 380px 0 0 0; font-size: 1.9em;">Russisch unterwegs!</h1>
-                <!--<h5><i> Lightning Talk:</i></h5>-->
-                <h3 style="" class="emphasize">
-                    Kotlin für die <br>moderne Android-Entwicklung
+                <h1 style="margin: 380px 0 0 0; font-size: 1.9em;" class="emphasize">Russisch unterwegs!</h1>
+                <img data-src="img/kotlin_logos/logo_Kotlin.svg"
+                     style="width: 200px; position: absolute; top: 506px; left: 4px;"
+                     class="plain" alt="Kotlin Logo"
+                />
+                <h3 style="left: 220px; top: 503px;" class="abs">
+                    für die moderne <br/>Android-Entwicklung
                 </h3>
             </div>
 
@@ -70,13 +82,6 @@
                 <div class="profile-content">
                     <a href="https://twitter.com/bentolor">@bentolor</a>
                 </div>
-            </div>
-
-            <div>
-                <img data-src="img/kotlin_logos/logo_Kotlin.svg"
-                     style="width: 300px; position: absolute; top: 0; left: 0;"
-                     class="plain" alt="Kotlin Logo"
-                />
             </div>
 
             <div id="rightsection">
@@ -121,7 +126,7 @@
                 </div>
             </section>
 
-            <section data-background="img/kotlin_logos/icon_Kotlin.svg" class="center">
+            <section data-background="img/kotlin_logos/icon_Kotlin.svg"  data-background-color="#fff" class="center">
                 <div style="width: 100%; text-align: right;">
                     <p>statisch typisierte<br/>
                         <b><span class="x-large">Allzweck-Sprache</span></b><br/>
@@ -129,7 +134,7 @@
                 </div>
             </section>
 
-            <section data-background="img/kotlin_logos/icon_Kotlin.svg" class="center">
+            <section data-background="img/kotlin_logos/icon_Kotlin.svg"  data-background-color="#fff" class="center">
                 <div data-markdown class="right x-small">
                     ## Prägnanz
 
@@ -143,7 +148,7 @@
                 </div>
             </section>
 
-            <section data-background="img/kotlin_logos/icon_Kotlin.svg" class="center">
+            <section data-background="img/kotlin_logos/icon_Kotlin.svg"  data-background-color="#fff" class="center">
                 <div class="right">
                     <h2 class="large">Datenblatt</h2>
 
@@ -231,7 +236,7 @@ enum class Title { Herr, Frau, wertes }                </code></pre>
           === Kotlin & Android ====================================================================
         -->
         <section>
-            <section>
+            <section class="center">
                 <h1>Kotlin & Android</h1>
             </section>
         </section>
@@ -241,7 +246,7 @@ enum class Title { Herr, Frau, wertes }                </code></pre>
           === Prägnanz ============================================================================
         -->
         <section>
-            <section>
+            <section class="center">
                 <h1>Prägnanz</h1>
             </section>
 
@@ -275,9 +280,9 @@ enum class Title { Herr, Frau, wertes }                </code></pre>
                 <div data-markdown class="twocol" style="padding: 30px 0;">
                     ```
                     data class Gast(
-                        val name: String,
-                        var zeit: Date = Date(),
-                        val title: Title?
+                    val name: String,
+                    var zeit: Date = Date(),
+                    val title: Title?
                     )
                     ```
                 </div>
@@ -426,7 +431,7 @@ enum class Title { Herr, Frau, wertes }                </code></pre>
                     Beispiel:
                     <!-- @formatter:off -->
                     ```
-                    List<String> list = Arrays.asList("a","b","c");
+                    List&lt;String%gt; list = Arrays.asList("a","b","c");
                     for (int index = 0; index < list.size(); index++) {
                         System.out.println(index + " -> " + list.get(index));
                     }
@@ -438,12 +443,11 @@ enum class Title { Herr, Frau, wertes }                </code></pre>
         </section>
 
 
-
         <!--
           === Sicherheit ==========================================================================
         -->
         <section>
-            <section>
+            <section class="center">
                 <h1>Sicherheit</h1>
             </section>
 
@@ -453,17 +457,27 @@ enum class Title { Herr, Frau, wertes }                </code></pre>
                 - Null-reference: billion-dollar mistake!
                 - Mutable by default
                 - Stronger typesystem
-
             </section>
-        </section>
 
+
+            <section>
+                <div>
+                    <h5>lateinit</h5>
+                    <pre><code>
+                        lateinit var name: String
+                        var age: Int by Delegates.notNull&lt;String&gt;()
+                    </code></pre>
+                </div>
+            </section>
+
+        </section>
 
 
         <!--
           === Ausdrucksstärke =====================================================================
         -->
         <section>
-            <section>
+            <section class="center">
                 <h1>Ausdrucksstärke & Lesbarkeit</h1>
             </section>
 
@@ -473,12 +487,11 @@ enum class Title { Herr, Frau, wertes }                </code></pre>
         </section>
 
 
-
         <!--
           === Interoperabilität ==================================================================
         -->
         <section>
-            <section>
+            <section class="center">
                 <h1>Interoperabilität</h1>
             </section>
 
@@ -492,7 +505,7 @@ enum class Title { Herr, Frau, wertes }                </code></pre>
           === Tooling =============================================================================
         -->
         <section>
-            <section>
+            <section class="center">
                 <h1>Tooling</h1>
             </section>
 
@@ -500,19 +513,6 @@ enum class Title { Herr, Frau, wertes }                </code></pre>
                 <div data-markdown>
                     ##### Convert to Kotlin
                     ...
-                </div>
-            </section>
-
-            <section>
-                <div data-markdown>
-                    <script type="text/template">
-                        ##### `lateinit`
-                        ```
-                        lateinit var name: String
-                        var age: Int by Delegates.notNull
-                        <String>()
-                            ```
-                    </script>
                 </div>
             </section>
 
@@ -667,7 +667,7 @@ enum class Title { Herr, Frau, wertes }                </code></pre>
           === Die Praxis =========================================================================
         -->
         <section>
-            <section>
+            <section class="center">
                 <h1>Die Praxis</h1>
             </section>
 
@@ -681,14 +681,9 @@ enum class Title { Herr, Frau, wertes }                </code></pre>
           === Fazit ==== =========================================================================
         -->
         <section>
-            <section>
+            <section class="center">
                 <h1>Fazit></h1>
             </section>
-
-            <section>
-                <h2>Fazit</h2>
-            </section>
-
 
             <section class="small">
                 <div data-markdown>

@@ -10,8 +10,6 @@
     margin: 0;
 }
 
-
-
 .reveal p.subline {
     margin: -0.2em 0 .6em 0;
     line-height: 0.92;
@@ -99,7 +97,7 @@
     display: table;
 }
 
-.reveal DIV.abs {
+.reveal .abs {
     position: absolute;
     left: 0;
     top: 0;
@@ -155,26 +153,6 @@
     display: inline-block;
 }
 
-.reveal .pc90 {
-    max-width: 90%;
-}
-
-/* poor-mans 3col layout */
-.col3-l {
-    float: left;
-    width: 32%;
-}
-
-.col3-c {
-    width: 32%;
-    display: inline-block;
-}
-
-.col3-r {
-    float: right;
-    width: 32%;
-}
-
 .reveal .x-large p, .reveal .x-large li, .reveal p.x-large, .reveal  div.x-large, .reveal  span.x-large, .reveal .x-large code {
     font-size: 168%;
 }
@@ -189,7 +167,6 @@
 
 .reveal .x-small p,.reveal  .x-small li,.reveal p.x-small,.reveal span.x-small, .reveal  div.x-small {
     font-size: 64%;
-    line-height: 64%;
 }
 
 .reveal .x-small code {
@@ -209,7 +186,7 @@
 
 /* Farbliche Hervorhebung */
 .reveal .emphasize {
-    color: #1b91ff;
+    color: #1b91ff !important;
 }
 
 /* Kein max height für Codeblöcke */
@@ -289,8 +266,8 @@
 
 .profile .profile-sidebar {
     padding: 10px 0 10px 0;
-    border: 1px solid rgba(125, 125, 100, 1);
-    background: rgba(63, 63, 50, .7);
+    border-top: 2px solid rgba(27, 145, 255, 1);
+    background: rgba(27, 145, 255, .2);
 }
 
 .profile .profile-userpic {
@@ -320,7 +297,7 @@
 }
 
 .profile .profile-usertitle-job {
-    color: #f99;
+    color: palevioletred;
     font-size: 0.75em;
     font-weight: 300;
 }
@@ -328,10 +305,10 @@
 .profile .profile-content {
     padding: 5px;
     border: 1px solid rgba(255, 255, 255, .2);
-    background: rgba(63, 63, 63, .8);
+    background: rgba(63, 63, 63, .2);
     font-size: 0.8em;
     font-weight: 600;
-
+    border-bottom: 2px solid rgba(27, 145, 255, 1);
 }
 
 /* ------------------------------------------------------------*/
@@ -394,4 +371,17 @@ A.c-ref > code {
 /* --------- Code Style tweaks ----------------------------*/
 .reveal PRE .hljs-keyword {
     font-weight: 700;
+}
+
+
+#exxcellent-logo {
+    position: fixed;
+    display: none;
+    bottom: 5%;
+    left: 3%;
+    z-index: 10;
+    height: 28px;
+    /* prevent logo gradient banding? */
+    -webkit-filter: drop-shadow(0px 0px 1px rgba(255,255,255,.3));
+    opacity: .5;
 }
