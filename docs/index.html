@@ -159,7 +159,7 @@
                         „dogfooding“: 0,5 Mio. LOC</p>
 
                     <p>Stabil</p>
-                    <p class="decent subline x-small">Start: ~2010, v1.0 Feb. '16<br/>Long-term backward compability</p>
+                    <p class="decent subline x-small">Start: ~2010, v1.0 Feb. '16<br/>Long-term backward compatibility</p>
 
                     <p>Integrationen</p>
                     <p class="decent subline x-small">IntelliJ, Eclipse<br> Maven, Ant, Gradle</p>
@@ -372,9 +372,9 @@ enum class Title { Herr, Frau, wertes }                </code></pre>
                     </div>
                     <!-- @formatter:on -->
 
-                    <p class="small left decent">Spezieller Typ `Klasse!` </p>
+                    <p class="small">Spezieller Typ <code>Klasse!</code></p>
                     <img src="img/java-nullable.png" class="plain" style="width: 540px">
-                    <p class="small left decent"> Kann in Kotlin nicht ausgedrückt werden! </p>
+                    <p class="small decent">Kann nicht mit Kotlin erzeugt werden! </p>
                 </div>
                 <div data-markdown style="clear: both" class="left">
                 </div>
@@ -469,26 +469,26 @@ for (index in list.indices) {
                 <h2>Prägnanz – Die Basics</h2>
                 <div class="twocol">
                     <h6>Type inference</h6>
-                    <p>Typangabe üblicherweise <br>nur an Schnittstellen</p>
+                    <p class="lgap">Typangabe üblicherweise <br>nur an Schnittstellen</p>
 
                     <h6>Keywords</h6>
-                    <p data-markdown>
+                    <p class="lgap" data-markdown>
                         kein `new`, `;` optional     <!-- -->
                         `fun`, `Int`, `val`, `..` …</p>
 
                     <h6>Konstrukte</h6>
-                    <p data-markdown>
+                    <p class="lgap" data-markdown>
                         `data class`       <!-- -->
                         `public` ist Default</p>
                 </div>
                 <div class="twocol">
                     <h6>Ausdrücke</h6>
-                    <p data-markdown> `if`…`else` ist ein Ausdruck,     <!-- -->
+                    <p data-markdown class="lgap"> `if`…`else` ist ein Ausdruck,     <!-- -->
                         String Templates  <!-- -->
                         `listOf(…)`, `with()`, …</p>
 
                     <h6>Konventionen</h6>
-                    <p>Operatoren, Dekomposition, …</p>
+                    <p class="lgap">Operatoren, Dekomposition, …</p>
                     <p data-markdown>
                     </p>
                 </div>
@@ -754,9 +754,12 @@ aha_useful.isChecked = mAha.isUseful</code></pre>
             <section>
                 <div class="container">
                     <h3>Lambda-Ausdrücke</h3>
-                    <p class="small left">… sind anonyme Funktionsausdrücke, die an andere Funktionen <br>
-                        übergeben werden können
-                        <span class="decent">(z.B. Bibliotheksfunktionen wie <code>filter()</code>)</span>
+                    <p class="small left">
+                        Anonyme Funktionsausdrücke als Parameter
+                        <span class="decent">(hier z.B. bei <code>filter(…)</code>)</span>.
+                        <!--… sind anonyme Funktionsausdrücke, die an andere Funktionen <br>-->
+                        <!--übergeben werden können-->
+                        <!--<span class="decent">(z.B. Bibliotheksfunktionen wie <code>filter()</code>)</span>-->
                     </p>
 
                     <!-- @formatter:off -->
@@ -774,7 +777,7 @@ aha_useful.isChecked = mAha.isUseful</code></pre>
                     <!-- @formatter:on -->
 
                     <!-- @formatter:off -->
-                    <div data-markdown style="width: 560px; float: left; ">
+                    <div data-markdown style="width: 560px; float: left; margin: 40px 0">
                         ```
                         fun getAha(id: UUID): Aha?
                           = ahas.filter { it.id == id }
@@ -785,9 +788,9 @@ aha_useful.isChecked = mAha.isUseful</code></pre>
 
                     <div data-markdown style="clear: both;" class="small left">
                         ##### Abkürzungen
-                        - Nur ein Parameter? `x -> …` kann durch `it` ersetzt werden
-                        - Aufruf-Parameter = Lambda? Runde Klammern können entfallen
-                        - wie in Java 8: Lambda erfüllen single abstract method (SAM)
+                        - Nur ein Lambda-Parameter? `x -> …` kann durch `it` ersetzt werden
+                        - letzter Aufruf-Parameter = Lambda? Runde Klammern können entfallen
+                        - wie in Java 8: Lambda erfüllen Single Abstract Methods (SAM)
                     </div>
                     <!-- @formatter:off -->
                     <div data-markdown style="clear: both;" class="left">
@@ -804,13 +807,14 @@ aha_useful.isChecked = mAha.isUseful</code></pre>
                 <h3>Einsatz in vielen Bibliotheksfunktionen</h3>
 
                 <!-- @formatter:off -->
-                <div data-markdown="">
+                <div data-markdown="" style="width: 90%; margin: 60px auto 0 auto">
+                    <script type="text/template">
                     ```
                     println("I will not ...")
                     repeat(3) { println("  ...repeat myself") }
                     ```
 
-                    How it works
+                    How it works<!-- .element: class="decent tgap " -->
                     ```
                     public inline fun repeat(times: Int, action: (Int) -> Unit) {
                         for (index in 0..times - 1) {
@@ -819,8 +823,8 @@ aha_useful.isChecked = mAha.isUseful</code></pre>
                     }
                     ```
 
-                    Als `inline` deklariert: Wirkung wie Makro-Element.  <!-- -->
-                    *Kein Funktionsoverhead!*
+                    `inline`: Wirkung wie Makro-Element. *Kein Funktionsoverhead!*
+                    </script>
                 </div>
                 <!-- @formatter:on -->
             </section>
@@ -876,7 +880,7 @@ fun main(args: Array&lt;String&gt;) {
                         <span class="fragment">&leftarrow; <em>Lambda</em>-Ausdruck</span><br>
                         &nbsp;<br>
                         &nbsp;<br>
-                        <span class="fragment">&rightarrow; Quiz: Was kommt raus?</span><br>
+                        <span class="fragment">&rightarrow; <i>Was kommt raus?</i> </span><br>
                         <br>
                     </p>
                 </div>
@@ -886,11 +890,14 @@ fun main(args: Array&lt;String&gt;) {
             <section>
                 <h3>Extension methods</h3>
 
-                <div data-markdown>
-                    - ermöglicht die Erweiterung fremder Klassen um "statische" Methoden
-                    - `this` wird zum erweiterten Objekt
+                <div data-markdown class="tgap">
+                    <script type="text/template">
+                        - ermöglicht die Erweiterung fremder Klassen um statische  Methoden
+                        - `this` zeigt auf das erweitertete Objekt  <!-- -->
 
-                    <!-- @formatter:off -->
+                        Am Beispiel eines Android-`Fragment`:
+
+                        <!-- @formatter:off -->
                     ```
                     fun Fragment.toast(message: String, duration: Int = Toast.LENGTH_SHORT) {
                       Toast.makeText(getActivity(), message, duration).show()
@@ -898,6 +905,7 @@ fun main(args: Array&lt;String&gt;) {
 
                     fragment.toast("Hello world!")
                     ```
+                    </script>
                     <!-- @formatter:on -->
                 </div>
             </section>
@@ -906,10 +914,11 @@ fun main(args: Array&lt;String&gt;) {
             <section>
                 <h3>Konventionen - Operatoren</h3>
 
-                <div data-markdown>
+                <div data-markdown class="tgap">
                     Feste Menge & Reihenfolge an Operatoren (vs. Scala).  <!-- -->
                     Diese werden über Namenskonventionen gemapped:
-
+                </div>
+                <div data-markdown class="tgap container left">
                     `+` &rightarrow; `.plus()`
 
                     `-` &rightarrow; `minus()`
@@ -929,17 +938,19 @@ fun main(args: Array&lt;String&gt;) {
                     - Haben einen einzigen Parameter
                     - Und sind mit dem `infix` Schlüsselwort markiert
 
+                    <!-- @formatter:off -->
                     ```kotlin
                     infix fun Int.shl(x: Int): Int {
-                    …
+                      …
                     }
 
-                    // Aufruf möglich als
                     1 shl 2
 
                     // als Equivalent zu
+
                     1.shl(2)
                     ```
+                    <!-- @formatter:on -->
                 </div>
             </section>
 
@@ -947,8 +958,11 @@ fun main(args: Array&lt;String&gt;) {
             <section>
                 <h3>Typsichere DSLs über „Empfänger“-Objekt</h3>
 
-                <p class="small left">Es ist möglich, Funktionssignaturen zu definieren, die Lambda-Ausdrücke
-                    erwarten bei denen <code>this</code> auf Zielobjekte eines bestimmten Typs zeigen. <br>
+                <p class="small left" style="width: 94%; margin: 0 auto">
+                    Es ist möglich, Funktionssignaturen zu definieren, die Lambda-Ausdrücke
+                    erwarten bei denen <code>this</code> auf Zielobjekte eines bestimmten Typs zeigen.
+                </p>
+                <p class="small left decent" style="width: 94%; margin: 20px auto">
                     Darüber sind typsichere DSLs möglich:
                 </p>
 
@@ -972,22 +986,21 @@ fun main(args: Array&lt;String&gt;) {
                 </div>
                 <!-- @formatter:on -->
 
-
-                <div class="abs" style="top: 260px; left: 610px; width: 60%">
+                <div class="abs" style="top: 284px; left: 610px; width: 60%">
                     <p style="text-align: left; line-height: .83em; font-size: .8em">
                         &nbsp;<br>
                         &nbsp;<br>
                         &nbsp;<br>
                         &nbsp;<br>
-                        <span class="fragment">&leftarrow; Erwarte Funktion mit <code>this</code>
+                        <span class="fragment">&leftarrow; Erwartet Funktion mit <code>this</code>
                             vom Typ <code>HTML</code></span><br>
-                        <span class="fragment">&leftarrow; „Empfängerobjekt“</span><br>
-                        <span class="fragment">&leftarrow; Führe Lambda auf „Empfängerobjekt“ aus</span><br>
+                        <span class="fragment">&leftarrow; Erstellung des <i>receiver object</i> </span><br>
+                        <span class="fragment">&leftarrow; Führe Lambda auf <i>receiver object</i>  aus</span><br>
                         <br>
                         <br>
                         <br>
                         <span class="fragment">&leftarrow; Kurzform von <code>html({…})</code></span><br>
-                        <span class="fragment">&leftarrow; <em>Lambda</em>-Ausdruck <code>HTML</code>-„Empfänger“</span><br>
+                        <span class="fragment">&leftarrow; <em>Lambda</em>-Ausdruck für einen <code>HTML</code>-„Empfänger“</span><br>
                     </p>
                 </div>
 
@@ -1045,7 +1058,7 @@ fun main(args: Array&lt;String&gt;) {
                     <ul style="font-size: .86em" class="decent">
                         <li><em>KAnnotator</em> erschließt & ergänzt extern @Nullable</li>
                     </ul>
-                    <li>Kotlin &rightarrow; Java in der Regel nahtlos; Java 7/8 ab Kotlin 1.1
+                    <li>Kotlin &rightarrow; Java in der Regel nahtlos; Java 7/8/9 ab Kotlin 1.1
                     <li>Java &rightarrow; gelegentlich sperriger
                         <ul style="font-size: .86em" class="decent">
                             <li>kein direktes <code>static</code> in Kotlin, sondern <i>companion object</i>
@@ -1057,29 +1070,29 @@ fun main(args: Array&lt;String&gt;) {
                             </li>
                             <li>SAMs mit <code>void</code> statt <code>Unit</code></li>
                             <li>Kein <i>package protected</i> in Kotlin</li>
-                            <li>Ergo: Für die API von Java-Libraries eher in Java bleiben</li>
                         </ul>
+                        Ergo: Für die API von Java-Libraries eher in Java bleiben
                     </li>
                 </ul>
             </section>
 
             <section>
-                <div  class="left container">
+                <div class="left container">
                     <h3>Java Interoperabilität – Android</h3>
                     <h6>Pro:</h6>
-                    <ul >
+                    <ul>
                         <li>volle Java 6-Kompabilität & nahtlose Studio-Integration</li>
                         <li>kleine Runtime, kein/geringer Overhead dank <code>inline</code> &amp; Co.</li>
                         <li>Mischen von Code &amp; Java-Konverter</li>
                         <li>Signifikanter Effizienzgewinn durch Sprache und Android Extensions</li>
-                        <li>Einsparpotential: Kotlin stdlib ersetzt einige übliche Java-Bibliotheken</li>
+                        <li>Einsparpotential: Kotlin stdlib ersetzt einige, übliche Java-Bibliotheken</li>
                     </ul>
 
                     <h6>Con:</h6>
                     <ul>
                         <li>Durch öffentliche Properties wächst die Methoden-Anzahl stärker<br>
-                            &rightarrow; 64k Methodenlimit von Android / DEX <br>
-                            &rightarrow; ggf. <code>private</code> und <code>@JvmField</code> bevorzugen
+                            <span class="decent lgap">&rightarrow; 64k Methodenlimit von Android / DEX <br></span>
+                            <span class="decent lgap">&rightarrow; ggf. <code>private</code> und <code>@JvmField</code> bevorzugen</span>
                         </li>
                         <li>UI XML vs. Anko: eher ambivalent</li>
                     </ul>
@@ -1099,14 +1112,17 @@ fun main(args: Array&lt;String&gt;) {
 
             <section>
                 <h3>Fokus: Gute Toolbarkeit</h3>
-                <div data-markdown>
+                <div data-markdown style="width: 82%; margin: 40px auto">
                     <script type="text/template">
                         - Ziel: Compiler *vergleichbar schnell wie Java* (vs. Scala)
-                        - *Exzellente Auto-Completion* und *Hinweise in der IDE* <br>
-                        Via DSLs entscheidender Grund für Gradle auf Kotlin zu setzen
-                        - *Automatische Konvertierung* auf Anforderung oder bei Copy & Paste
+
+                        - *Exzellente Auto-Completion* und *Hinweise in der IDE* <br>    <!-- -->
+                        via DSLs Grund #1 für Gradle auf Kotlin zu setzen
+
+                        - *Automatische Konvertierung* von Klassen und Copy&Paste
                         ![Convert Java Code](img/convert-java.png)<!-- .element: class="plain" style="margin: 0 140px;" -->
-                        - Refactoring hinkt noch etwas hinterher
+
+                        - Refactoring hinkt noch etwas hinterher<!-- .element: class="decent" -->
                     </script>
                 </div>
             </section>
@@ -1148,13 +1164,7 @@ fun main(args: Array&lt;String&gt;) {
                     Benjamin Schmid
                 </div>
 
-                <div class="twocol small" data-markdown>
-                    ##### Frameworks
-                    - Verzeichnis von Kotlin Frameworks, Ressourcen & Beispielen: [Awesome Kotlin](http://kotlin.link/)
-                    https://kotlinlang.org/docs/resources.html
-                </div>
-
-                <div class="twocol small" data-markdown>
+                <div class="threecol small" data-markdown>
                     ##### Bildnachweis
                     - [Kotlin Islands Maps](https://commons.wikimedia.org/wiki/File:Kotlin_Island_1706.png)
                     - [Atomic bomb
@@ -1163,6 +1173,15 @@ fun main(args: Array&lt;String&gt;) {
                     - [Kotlin Logo](https://resources.jetbrains.com/assets/products/kotlin/kotlin_logos.zip)
                     - [Hand-written arrows](http://designercandies.net/hand-drawn-arrows-brush/)
                 </div>
+
+
+                <div class="twocol small" data-markdown>
+                    ##### Frameworks
+                    - Verzeichnis von Kotlin Frameworks, Ressourcen & Beispielen: [Awesome Kotlin](http://kotlin.link/)
+                    https://kotlinlang.org/docs/resources.html
+                </div>
+
+
             </section>
 
         </section>
