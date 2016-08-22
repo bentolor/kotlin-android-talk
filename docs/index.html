@@ -731,7 +731,7 @@ aha_useful.isChecked = mAha.isUseful</code></pre>
 
 
             <!--<section class="center">-->
-                <!--<h2>Funktionen</h2>-->
+            <!--<h2>Funktionen</h2>-->
             <!--</section>-->
 
 
@@ -883,8 +883,6 @@ fun main(args: Array&lt;String&gt;) {
             </section>
 
 
-
-
             <section>
                 <h3>Extension methods</h3>
 
@@ -933,7 +931,7 @@ fun main(args: Array&lt;String&gt;) {
 
                     ```kotlin
                     infix fun Int.shl(x: Int): Int {
-                        …
+                    …
                     }
 
                     // Aufruf möglich als
@@ -996,9 +994,37 @@ fun main(args: Array&lt;String&gt;) {
             </section>
 
             <section>
+                <h3>Anko: Android-DSL für XML</h3>
+
+                <!-- @formatter:off -->
                 <div data-markdown>
-                    ### Anko: Android-DSL für XML
+                    ```kotlin
+                    relativeLayout {
+                        lparams(width = matchParent, height = matchParent)
+                        backgroundResource = R.drawable.background_activated
+
+                        checkBox {
+                            enabled = false
+                            gravity = Gravity.CENTER
+                            padding = dip(4)
+                            lparams(width = wrapContent, height =  wrapContent)  {
+                                alignParentRight()
+                            }
+                        }
+
+                        textView {
+                            textResource = R.string.aha_title
+                            rightPadding = dip(4)
+                            leftPadding = dip(4)
+                            lparams(width = matchParent, height =  wrapContent) {
+                                leftOf(cb)
+                            }
+                        }
+                    }
+                    ```
+
                 </div>
+                <!-- @formatter:on -->
             </section>
         </section>
 
@@ -1012,12 +1038,54 @@ fun main(args: Array&lt;String&gt;) {
             </section>
 
             <section>
-                <p>Freies Mischen von Java &amp; Kotlin</p>
-                <p>Alle Java-Bibliotheken können direkt genutzt werden</p>
-                <p>Development lead Andrey Breslav has said that Kotlin is designed to be an industrial-strength object-oriented language,
-                    and to be a better language than Java but still be fully interoperable with Java code, allowing companies to make a
-                    gradual migration from Java to Kotlin.</p>
+                <h3>Java Interoperabilität – Allgemeines</h3>
+                <ul>
+                    <li>Klassenweises <em>Mischen von Java &amp; Kotlin-Code</em> problemlos</li>
+                    <li>Alle Java-Bibliotheken können direkt genutzt werden</li>
+                    <ul style="font-size: .86em" class="decent">
+                        <li><em>KAnnotator</em> erschließt & ergänzt extern @Nullable</li>
+                    </ul>
+                    <li>Kotlin &rightarrow; Java in der Regel nahtlos; Java 7/8 ab Kotlin 1.1
+                    <li>Java &rightarrow; gelegentlich sperriger
+                        <ul style="font-size: .86em" class="decent">
+                            <li>kein direktes <code>static</code> in Kotlin, sondern <i>companion object</i>
+                                <pre><code class="small">public static final int VISIBLE = 0x00000000;
+                                    &downarrow;
+                                    companion object {
+    @JvmField val VISIBLE: Int = 0x00000000
+}</code></pre>
+                            </li>
+                            <li>SAMs mit <code>void</code> statt <code>Unit</code></li>
+                            <li>Kein <i>package protected</i> in Kotlin</li>
+                            <li>Ergo: Für die API von Java-Libraries eher in Java bleiben</li>
+                        </ul>
+                    </li>
+                </ul>
             </section>
+
+            <section>
+                <div  class="left container">
+                    <h3>Java Interoperabilität – Android</h3>
+                    <h6>Pro:</h6>
+                    <ul >
+                        <li>volle Java 6-Kompabilität & nahtlose Studio-Integration</li>
+                        <li>kleine Runtime, kein/geringer Overhead dank <code>inline</code> &amp; Co.</li>
+                        <li>Mischen von Code &amp; Java-Konverter</li>
+                        <li>Signifikanter Effizienzgewinn durch Sprache und Android Extensions</li>
+                        <li>Einsparpotential: Kotlin stdlib ersetzt einige übliche Java-Bibliotheken</li>
+                    </ul>
+
+                    <h6>Con:</h6>
+                    <ul>
+                        <li>Durch öffentliche Properties wächst die Methoden-Anzahl stärker<br>
+                            &rightarrow; 64k Methodenlimit von Android / DEX <br>
+                            &rightarrow; ggf. <code>private</code> und <code>@JvmField</code> bevorzugen
+                        </li>
+                        <li>UI XML vs. Anko: eher ambivalent</li>
+                    </ul>
+                </div>
+            </section>
+
         </section>
 
 
@@ -1030,178 +1098,63 @@ fun main(args: Array&lt;String&gt;) {
             </section>
 
             <section>
-                <h2>Fokus: Gute Toolbarkeit</h2>
-                <div>
-                    - Auto-Completion
-                    - JetBrains lead Dmitry Jemerov said that most languages did not have the features they were looking for, with the
-                    exception of Scala. However, he cited the slow compile time of Scala as an obvious deficiency.[5] One of the stated
-                    goals of Kotlin is to compile as quickly as Java.
-                </div>
-            </section>
-
-            <section>
-                <div data-markdown>
-                    ##### Convert to Kotlin
-                    ...
-                </div>
-            </section>
-
-            <section>
+                <h3>Fokus: Gute Toolbarkeit</h3>
                 <div data-markdown>
                     <script type="text/template">
-                        ##### No static modifier
-
-                        Following on the previous point, Kotlin has unusual handling of static function and property declarations that are called from Java. It’s not bad, but it feels dirtier than necessary. For example, the Android View class defines some static constants like View.VISIBLE and static methods like View.inflate:
-
-                        ```
-                        public class View {
-                        public static final int VISIBLE = 0x00000000;
-                        public static final int INVISIBLE = 0x00000004;
-                        public static View inflate(Context context, int resource) {...}
-                        }
-                        ```
-                        ```
-                        class View {
-                        companion object {
-                        @JvmField
-                        val VISIBLE: Int = 0x00000000
-                        @JvmField
-                        val INVISIBLE: Int = 0x00000004
-                        @JvmStatic
-                        fun inflate(context: Context, resource: Int) {...}
-                        }
-                        }
-                        }
-
-
-                        // With annotations:
-                        View.VISIBLE;
-
-                        //Without annotations:
-                        View.Companion.getVISIBLE();
-                        ```
+                        - Ziel: Compiler *vergleichbar schnell wie Java* (vs. Scala)
+                        - *Exzellente Auto-Completion* und *Hinweise in der IDE* <br>
+                        Via DSLs entscheidender Grund für Gradle auf Kotlin zu setzen
+                        - *Automatische Konvertierung* auf Anforderung oder bei Copy & Paste
+                        ![Convert Java Code](img/convert-java.png)<!-- .element: class="plain" style="margin: 0 140px;" -->
+                        - Refactoring hinkt noch etwas hinterher
                     </script>
                 </div>
-            </section>
-
-            <section>
-                <div data-markdown>
-                    <script type="text/template">
-                        ##### Method count
-                        Writing code in Kotlin will certainly reduce the number of lines of code in your project. But it will also probably increase the method count of the compiled code, which is of course a drawback if you’re using Android. There are a number of reasons for that, but one of the larger contributors is the way Kotlin implements properties.
-
-                        Unlike Java, the Kotlin language doesn’t provide any way to define a bare field. All val and var declarations instead create a property.
-
-                        If you are close to the method limit in your android app, I recommend using the workaround of applying the @JvmField annotation on public constants for which you don’t expect to need a custom getter for in the future. This will prevent the getters from being generated, and can cut down on your method count.
-
-                        It’s not all bad, though. As I discussed in my article on converting an app to 100% Kotlin, the Kotlin standard library is small and can replace a number of common Java libraries that are much larger once you don’t need them in Java any more. Thanks to the standard library, the method count in that app decreased after converting it to Kotlin. So as long as you avoid the big areas that can increase your method count, you may end up ahead in the end.
-                    </script>
-                </div>
-            </section>
-
-            <section>
-                <div data-markdown>
-                    <script type="text/template">
-                        ##### bidirektionales interop
-                        Gerade auf dem Weg zurück unagenehm
-
-                        ##### Keine SAMs, da
-                        ```
-                        fun registerCallback(r: () -> Unit)
-                        ```
-
-                        in Java wie folgt aufgerufen muss
-
-                        ```
-                        registerCallback(() -> {
-                        /** do stuff */
-                        return Unit.INSTANCE;
-                        })
-                        ```
-
-                        Ergo: Libaries für Java eher in JAva
-                    </script>
-                </div>
-            </section>
-
-            <section>
-                <div data-markdown>
-                    <script type="text/template">
-                        ##### final by default
-                        - functions!
-
-                        #####  public by default
-
-                        ##### Kein `package protected`
-                    </script>
-                </div>
-            </section>
-        </section>
-
-
-        <!--
-          === Die Praxis =========================================================================
-        -->
-        <section>
-            <section class="center">
-                <h1>Die Praxis</h1>
-            </section>
-
-            <section>
-                <h2>Interoperabilität</h2>
-            </section>
-
-            <section>
-                <h2>Alltag</h2>
-            </section>
-
-            <section>
-                <h2>The Good vs. The Bad vs. The Ugly</h2>
-                - Mehr lokale Variablen für pupblic properties vs. Feld für Implicit Cast
-
-                - Kotlin-Konverter der Beispiele nicht empfehlenswert
-                * Non-Nullables die in der Praxis doch welche sind
-                * `feld!!.foo` statt `lokaleVar.foo`.
-                Speziell die UI Referenzen (nach`onCreate`)
-                - kein static! (compantion object)
-                - kein package protected
-            </section>
-
-            <section>
-                <h2>Gradle Script Kotlin</h2>
             </section>
 
         </section>
-
 
         <!--
           === Fazit ==== =========================================================================
         -->
         <section>
+
             <section class="center">
-                <h1>Fazit></h1>
+                <h1>Fazit</h1>
             </section>
 
-            <section class="small">
+            <!--<section>
+                <h2>The Good vs. The Bad vs. The Ugly</h2>
                 <div data-markdown>
-                    ## Quellen
+                    - Leicht & intuitiv erlernbar! Vieles erschließt sich über Auto-Completion & Intuition
+                    - Macht viel Spass & Freude in der Verwendung!
+                    - Kotlin-Konverter der Beispiele nicht empfehlenswert
+                    * Non-Nullables die in der Praxis doch welche sind
+                    * `feld!!.foo` statt `lokaleVar.foo`.
+                    Speziell die UI Referenzen (nach`onCreate`)
+                    - kein static! (compantion object)
+                    - kein package protected
                 </div>
+            </section>-->
 
-                <div class="threecol small" data-markdown>
+
+            <section>
+
+                <h2>Quellen &amp; Materalien</h2>
+
+                <div class="twocol small" data-markdown>
                     ##### Materialien für den Einstieg
-                    - [Ein Überblick über Java-Alternativen für den industriellen
+                    * [Ein Überblick über Java-Alternativen für den industriellen
                     Einsatz](http://www.heise.de/developer/artikel/Ein-Ueberblick-ueber-Java-Alternativen-fuer-den-industriellen-Einsatz-2074554.html),
                     Benjamin Schmid
-
                 </div>
 
-                <div class="threecol small" data-markdown>
+                <div class="twocol small" data-markdown>
                     ##### Frameworks
-                    - [Awesome Kotlin](http://kotlin.link/) Ressourcen-Verzeichnis
+                    - Verzeichnis von Kotlin Frameworks, Ressourcen & Beispielen: [Awesome Kotlin](http://kotlin.link/)
                     https://kotlinlang.org/docs/resources.html
                 </div>
 
-                <div class="threecol small" data-markdown>
+                <div class="twocol small" data-markdown>
                     ##### Bildnachweis
                     - [Kotlin Islands Maps](https://commons.wikimedia.org/wiki/File:Kotlin_Island_1706.png)
                     - [Atomic bomb

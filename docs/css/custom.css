@@ -175,7 +175,7 @@
     font-size: 124%;
 }
 
-.reveal .small li, .reveal div.small,.reveal span.small, .reveal .small code, .reveal .small {
+.reveal .small li, .reveal div.small,.reveal span.small, .reveal .small code, .reveal .small, .reveal .small li {
     font-size: 86%;
 }
 
