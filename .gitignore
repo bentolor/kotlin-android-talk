@@ -47,7 +47,6 @@ proguard/
 captures/
 
 # Intellij
-*.iml
 .idea/workspace.xml
 
 ### JetBrains template
