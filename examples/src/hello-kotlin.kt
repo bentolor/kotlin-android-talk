@@ -13,7 +13,8 @@ enum class Title { Herr, Frau, wertes }
 
 /*
 - Top-Level functions
-- Prägnanz: Kein Semikolon, `new`,
+- Prägnanz: Kein Semikolon
+- Kein`new`,
 - `if` ist ein Ausdruck
 - Properties
 - `val` und `var`

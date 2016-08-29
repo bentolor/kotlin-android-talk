@@ -15,5 +15,5 @@ class FirstClassFunction(
 fun main(args: Array<String>) {
     val c = FirstClassFunction(Integer::parseInt, { it % 2 == 0 })
     val strings = listOf("2", "7", "8")
-    println(strings.filter(c::strToBool))
+    println(strings.filter(c::strToBool)) // Kotlin 1.1+
 }
