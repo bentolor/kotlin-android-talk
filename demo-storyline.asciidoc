@@ -25,6 +25,8 @@ fun main(args: Array<String>) {
 - Prägnanz: Kein Semikolon
 ****
 
+<<<<
+
 == Hallo Kotlin
 
 [code]
@@ -43,7 +45,6 @@ data class Gast(val name: String, var zeit: Date = Date(), val title: Title?)
 enum class Title { Herr, Frau, wertes }
 ----
 
-<<<<
 
 ****
 - Prägnanz: Kein Semikolon
@@ -71,7 +72,8 @@ fun main(args: Array<String>) {
 }
 ----
 
-Ausgebaut:
+<<<<
+.Ausgebaut:
 
 [code]
 ----
@@ -107,6 +109,7 @@ fun main(args: Array<String>) {
 }
 ----
 
+<<<<
 == Nullable in Android
 
 1. Convert Activity to Kotlin
@@ -158,6 +161,7 @@ class MainActivity : Activity() {
 }
 ----
 
+<<<<
 == Kotlin Android Extension
 
 .`build.gradle`
@@ -200,6 +204,7 @@ Zeigt:
 - Extension Methods
 ****
 
+<<<<
 === Anko DSL
 
 .`build.gradle`
