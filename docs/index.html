@@ -741,26 +741,6 @@ aha_useful.isChecked = mAha.isUseful</code></pre>
 
             <section class="center"><h1>Showtime!</h1></section>
 
-            <!--<section class="center">-->
-            <!--<h2>Funktionen</h2>-->
-            <!--</section>-->
-
-
-            <section class="center">
-                <h2>Funktionen als <br>first-class elements</h2>
-
-                <div class="left" style="width: 80%; margin: 20px auto">
-                    <p>Funktionen sind Sprachelemente erster Klasse und können daher auch
-                        als <em>Variablen, Properties, Parameter</em> und <em>Rück&shy;gabe&shy;werte</em> genutzt werden.</p>
-
-                    <p> Durch Verschachtelung lassen sich
-                        <em>Funktionen höherer Ordnung</em>
-                        <i>(Higher-order functions)</i>
-                        erschaffen
-                    </p>
-                </div>
-            </section>
-
 
             <section>
                 <div class="container">
@@ -866,6 +846,22 @@ aha_useful.isChecked = mAha.isUseful</code></pre>
 
 
             <section class="center"><h1>Showtime!</h1></section>
+
+
+            <section class="center">
+                <h2>Funktionen als <br>first-class elements</h2>
+
+                <div class="left" style="width: 80%; margin: 20px auto">
+                    <p>Funktionen sind Sprachelemente erster Klasse und können daher auch
+                        als <em>Variablen, Properties, Parameter</em> und <em>Rück&shy;gabe&shy;werte</em> genutzt werden.</p>
+
+                    <p class="fragment"> Durch Verschachtelung lassen sich
+                        <em>Funktionen höherer Ordnung</em>
+                        <i>(Higher-order functions)</i>
+                        erschaffen
+                    </p>
+                </div>
+            </section>
 
 
             <section>
@@ -1072,23 +1068,22 @@ fun main(args: Array&lt;String&gt;) {
                 <ul>
                     <li>Klassenweises <em>Mischen von Java &amp; Kotlin-Code</em> problemlos</li>
                     <li>Alle Java-Bibliotheken können direkt genutzt werden</li>
-                    <ul style="font-size: .86em" class="decent">
-                        <li><em>KAnnotator</em> erschließt & ergänzt extern @Nullable</li>
-                    </ul>
                     <li>Kotlin &rightarrow; Java in der Regel nahtlos; Java 7/8/9 ab Kotlin 1.1
                     <li>Java &rightarrow; gelegentlich sperriger
-                        <ul style="font-size: .86em" class="decent">
+                        <ul style="font-size: .86em" class="decent small">
                             <li>kein direktes <code>static</code> in Kotlin, sondern <i>companion object</i>
+                                <!-- @formatter:off -->
                                 <pre><code class="small">public static final int VISIBLE = 0x00000000;
                                     &downarrow;
-                                    companion object {
+companion object {
     @JvmField val VISIBLE: Int = 0x00000000
 }</code></pre>
+                                <!-- @formatter:on -->
                             </li>
                             <li>SAMs mit <code>void</code> statt <code>Unit</code></li>
                             <li>Kein <i>package protected</i> in Kotlin</li>
                         </ul>
-                        Ergo: Für die API von Java-Libraries eher in Java bleiben
+                        <p>→ Für die API von Java-Libraries eher in Java bleiben</p>
                     </li>
                 </ul>
             </section>
@@ -1133,8 +1128,8 @@ fun main(args: Array&lt;String&gt;) {
                     <script type="text/template">
                         - Ziel: Compiler *vergleichbar schnell wie Java* (vs. Scala)
 
-                        - *Exzellente Auto-Completion* und *Hinweise in der IDE* <br>    <!-- -->
-                        via DSLs Grund #1 für Gradle auf Kotlin zu setzen
+                        - *Gute Auto-Completion* und *Hinweise & Inspections in der IDE* <br>    <!-- -->
+                         mit DSLs Grund #1 für Gradle auf Kotlin zu setzen
 
                         - *Automatische Konvertierung* von Klassen und Copy&Paste
                         ![Convert Java Code](img/convert-java.png)<!-- .element: class="plain" style="margin: 0 140px;" -->
@@ -1142,6 +1137,12 @@ fun main(args: Array&lt;String&gt;) {
                         - Refactoring hinkt noch etwas hinterher<!-- .element: class="decent" -->
                     </script>
                 </div>
+            </section>
+
+            <section>
+                <h3>Lernen: Kotlin Koans</h3>
+                <img data-src="img/koans-edu-plugin.png"
+                     alt="Kotlin Educational Plugin mit Kotlin Koans">
             </section>
 
         </section>
@@ -1174,30 +1175,44 @@ fun main(args: Array&lt;String&gt;) {
 
                 <h2>Quellen &amp; Materalien</h2>
 
-                <div class="twocol small" data-markdown>
+                <div class="threecol small" data-markdown>
                     ##### Materialien für den Einstieg
+                    * [*kotlinlang.org*](https://kotlinlang.org/)
+                    * [*Kotlin Koans*](https://github.com/Kotlin/kotlin-koans)   <!--  -->
+                       auch online: [try.kotl.in](http://try.kotl.in)
+                       in IntelliJ: [Kotlin Edu Plugin](https://blog.jetbrains.com/kotlin/2016/03/kotlin-educational-plugin/)
                     * [Ein Überblick über Java-Alternativen für den industriellen
                     Einsatz](http://www.heise.de/developer/artikel/Ein-Ueberblick-ueber-Java-Alternativen-fuer-den-industriellen-Einsatz-2074554.html),
                     Benjamin Schmid
                 </div>
 
                 <div class="threecol small" data-markdown>
-                    ##### Bildnachweis
-                    - [Kotlin Islands Maps](https://commons.wikimedia.org/wiki/File:Kotlin_Island_1706.png)
-                    - [Atomic bomb
-                    explosion](https://www.pond5.com/stock-footage/37592494/fireball-and-smoke-formation-out-atomic-blast.html)
-                    - [Android Robot](https://commons.wikimedia.org/wiki/File:Android_robot.svg)
-                    - [Kotlin Logo](https://resources.jetbrains.com/assets/products/kotlin/kotlin_logos.zip)
-                    - [Hand-written arrows](http://designercandies.net/hand-drawn-arrows-brush/)
+                    ##### Referenzen & Verzeichnisse
+                    - [Sprachreferenz](http://kotlinlang.org/docs/reference/)
+                    - [Awesome Kotlin](http://kotlin.link/)
+                    - [OSS Projects & Libraries](https://kotlinlang.org/docs/resources.html)
                 </div>
 
+                <div class="threecol small" data-markdown>
+                    ##### Nennenswerte Frameworks
+                    - [RxKotlin](https://github.com/ReactiveX/RxKotlin) (Reactive)
+                    - [spek](https://github.com/jetbrains/spek) (Testing)
+                    - [Fuel](https://github.com/kittinunf/Fuel) (HTTP f. Android)
+                    - [kovenant](https://github.com/mplatvoet/kovenant) (Android Promises)
 
-                <div class="twocol small" data-markdown>
-                    ##### Frameworks
-                    - Verzeichnis von Kotlin Frameworks, Ressourcen & Beispielen: [Awesome Kotlin](http://kotlin.link/)
-                    https://kotlinlang.org/docs/resources.html
+                    ##### Diverses
+                    - [*@kotlin*](https://twitter.com/kotlin) & [*@bentolor*](https://twitter.com/bentolor)
                 </div>
 
+                <div class="x-small" style="padding-top: 60px; clear: left" data-markdown>
+                    Bildnachweis:
+                    [Kotlin Islands Maps](https://commons.wikimedia.org/wiki/File:Kotlin_Island_1706.png),
+                    [Atomic bomb
+                    explosion](https://www.pond5.com/stock-footage/37592494/fireball-and-smoke-formation-out-atomic-blast.html),
+                    [Android Robot](https://commons.wikimedia.org/wiki/File:Android_robot.svg),
+                    [Kotlin Logo](https://resources.jetbrains.com/assets/products/kotlin/kotlin_logos.zip),
+                    [Hand-written arrows](http://designercandies.net/hand-drawn-arrows-brush/)
+                </div>
 
             </section>
 
