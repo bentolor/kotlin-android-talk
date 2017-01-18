@@ -840,33 +840,92 @@ create_entry.setOnClickListener { createElement() }</code></pre>
             </section>
 
 
+            <section class="left">
+                <h2>Extension methods / properties </h2>
+
+                <div class="tgap">
+                    <ul>
+                        <li>… ermöglichen die Erweiterung fremder Klassen
+                            <span class="decent">(Android, JRE)</span></li>
+                        <li><code>this</code> zeigt auf das erweitertete Objekt</li>
+                    </ul>
+
+                    <!-- @formatter:off -->
+                    <pre class="kotlin"><code>// Extension method  für ein Android Fragment
+fun Fragment.toast(message: String, duration: Int = Toast.LENGTH_SHORT) {
+  Toast.makeText(this.getActivity(), message, duration).show()
+}
+
+// Extension property für das Android EditText Widget
+var EditText.stringValue: String
+    get() = text.toString()
+    set(str) { setText(str)  }</code></pre>
+
+<pre class="kotlin"><code>// Verwendung
+toast("Hallo Zuschauer!")
+nameField.stringValue = "Max Muster"</code></pre>
+                    <!-- @formatter:on -->
+                </div>
+            </section>
+
+
             <section>
-                <h2>Lambda - TEils2? Bibliotheksfunktionen?</h2>
-                <div>
-                    Kotlin-Code ist in der Regel wesentlich <strong>prägnanter</strong>, dennoch <strong>intuitiv lesbar</strong>.
+                <h2>Extensions „frei Haus“</h2>
+                <div class="small">
+                    Zahlreiche Extensions sind in der Kotlin Standardbibliothek bereits enthalten.
+                    Sie <strong>erweitern Java Klassen</strong>
+                    und sind <em>komfortabel über Code-Completion</em> zugänglich.
                 </div>
                 <div class="left" style="width: 90%; margin: 0 auto;">
-                    <h6>Java</h6>
                     <!-- @formatter:off -->
-                        <pre class="java"><code>List&lt;String&gt; list = Arrays.asList("a","b","c");
+                    <pre class="java"><code class="small">List&lt;String&gt; list = Arrays.asList("a","b","c");
 for (int index = 0; index < list.size(); index++) {
-    System.out.println(index + " -> " + list.get(index));
+    if (index % 2 == 0)
+        System.out.println(index + " -> " + list.get(index));
 }</code></pre>
-                        <!-- @formatter:on -->
-                    <h6>Kotlin</h6>
-                    <!-- @formatter:off -->
-                    <pre><code>val list = listOf("a", "b", "c")
-for (index in list.indices) {
+                <div class="small">
+                    Sie  helfen wesentlich beim <strong>prägnanten</strong>,
+                    dennoch <strong>intuitiv lesbar</strong> Code.
+                    <br>Im Beispiel: <code>listOf</code>, <code>indices</code> und <code>filter</code>:
+                </div>
+
+                <pre class="kotlin"><code class="small">val list = listOf("a", "b", "c")
+for (index in list.indices.filter { it % 2 == 0 }) {
     println("$index -> ${list[index]}")
-}</code></pre>
-                        <!-- @formatter:on -->
+}
+</code></pre>
+                    <!-- @formatter:on -->
                 </div>
-                <div class="decent">
-                    Gutes Tooling führt beim Entwickeln
+                <div class="decent x-small">
+                    Entsprechende Bibliotheken auch für Android
+                    (z.B. <a href="https://github.com/Kotlin/anko">Anko</a>).
                 </div>
-                <div class="abs handwriting fragment small"
-                     style="transform: rotate(-9deg); left: 210px; top: 394px; color:  red">
-                    Immutable!
+            </section>
+
+
+            <section>
+                <h2>Fokus: Tooling</h2>
+                <div data-markdown style="width: 82%; margin: 40px auto">
+                    <script type="text/template">
+                        - Ziel: Compiler *vergleichbar schnell wie Java* (vs. Scala)
+
+                        - *Gute Auto-Completion* und *Hinweise &amp; Inspections in der IDE*    <!-- -->
+                            mit DSLs Grund #1 für Gradle auf Kotlin zu setzen
+
+                        - Compiler: *Mischen von Java &amp; Kotlin-Code* bei problemlosem Zugriff
+                            in beide Richtungen
+
+                        - *Automatische Konvertierung* von Java-Code
+                    </script>
+                </div>
+            </section>
+
+
+            <section>
+                <h3>Automatische Konvertierung <br>Java &rightarrow; Kotlin</h3>
+                <div data-markdown style="margin: 32px auto">
+                    ![Convert Java Classes](img/convert-java.png)
+                    ![Convert Java Code from Clipboard](img/kotlin-copypaste-convert.png)
                 </div>
             </section>
 
@@ -875,36 +934,25 @@ for (index in list.indices) {
 
 
         <!--
-          === Ausdrucksstärke =====================================================================
+          === Android on Speed ====================================================================
         -->
         <section>
 
-            <section>
-                <h3>Extension methods</h3>
-
-                <div data-markdown class="tgap">
-                    <script type="text/template">
-                        - ermöglicht die Erweiterung fremder Klassen um statische  Methoden
-                        - `this` zeigt auf das erweitertete Objekt  <!-- -->
-
-                        Am Beispiel eines Android-`Fragment`:
-
-                        <!-- @formatter:off -->
-                        ```
-                        fun Fragment.toast(message: String, duration: Int = Toast.LENGTH_SHORT) {
-                          Toast.makeText(getActivity(), message, duration).show()
-                        }
-
-                        fragment.toast("Hello world!")
-                        ```
-                    </script>
-                    <!-- @formatter:on -->
-                </div>
+            <section class="center">
+                <h1>Demo</h1>
             </section>
 
+            <section data-background-color="#333"
+                     data-state="speedupvideo"
+                     data-background-video="img/screencast-kotlin-android.mp4">
+            </section>
 
-            <!--<section class="center"><h1>Showtime!</h1></section>-->
+        </section>
 
+        <!--
+          === Ausdrucksstärke =====================================================================
+        -->
+        <section>
 
             <section class="center">
                 <h2>Funktionen als <br>first-class elements</h2>
@@ -1250,22 +1298,6 @@ companion object {
                 <h1>Tooling</h1>
             </section>
 
-            <section>
-                <h3>Fokus: Gute Toolbarkeit</h3>
-                <div data-markdown style="width: 82%; margin: 40px auto">
-                    <script type="text/template">
-                        - Ziel: Compiler *vergleichbar schnell wie Java* (vs. Scala)
-
-                        - *Gute Auto-Completion* und *Hinweise & Inspections in der IDE* <br>    <!-- -->
-                         mit DSLs Grund #1 für Gradle auf Kotlin zu setzen
-
-                        - *Automatische Konvertierung* von Klassen und Copy&Paste
-                        ![Convert Java Code](img/convert-java.png)<!-- .element: class="plain" style="margin: 0 140px;" -->
-
-                        - Refactoring hinkt noch etwas hinterher<!-- .element: class="decent" -->
-                    </script>
-                </div>
-            </section>
 
             <section>
                 <h3>Lernen: Kotlin Koans</h3>
@@ -1423,5 +1455,14 @@ companion object {
         ]
     });
 </script>
+
+<!-- hack: increase playback speed of background video -->
+<script>
+    Reveal.addEventListener( 'speedupvideo', function() {
+        document.getElementsByTagName("video")[0].playbackRate = 2.0
+    }, false );
+</script>
+
+
 </body>
 </html>
