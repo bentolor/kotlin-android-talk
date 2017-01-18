@@ -301,22 +301,24 @@ enum class Title { Herr, Frau, wertes }                </code></pre>
                     ```
                 </div>
                 <!-- @formatter:on -->
-                <div data-markdown style="padding-top: 1px">
+                <div data-markdown style="padding-top: 1px;">
                     ##### Werte-Container
                     - Um Methoden erweiterbar
                     - Vererbung ab Kotlin 1.1
                 </div>
-                <div data-markdown class="tgapxl" style="clear: left">
+                <div data-markdown class="tgapxl decent" style="clear: left;">
                     ###### Kotlin übernimmt
                 </div>
                 <div class="container decent small">
                     <div data-markdown style="float: left">
                         - Getter &amp; Setter
                         - `equals()`
-                        - `hashCode()`
                     </div>
                     <div data-markdown style="float: left">
+                        - `hashCode()`
                         - `toString()`
+                    </div>
+                    <div data-markdown style="float: left">
                         - `copy()` für Varianten
                         - `componentN()` für Destructuring
                     </div>
@@ -435,7 +437,7 @@ enum class Title { Herr, Frau, wertes }                </code></pre>
                 </div>
             </section>
 
-            <section>
+            <section class="center">
                 <h2>Properties</h2>
                 <div>
                     <ul>
@@ -469,10 +471,10 @@ enum class Title { Herr, Frau, wertes }                </code></pre>
                     <br>String Templates
                     <br>Syntactic Sugar</p>
                     <p class="tgap"><code>listOf(…)</code>, <code>repeat(3){…}</code>,
-                    <br><code>with(){…}</code>, …</p>
-                    <p class="tgap">Operatoren &amp; Dekomposition über Namen
+                    <br><code>with(x){…}</code>, <code>x.apply{…}</code>, …</p>
+                    <p class="tgap"><code>public</code> ist Standard
                     <br>kein <code>new</code>; <code>;</code> optional
-                    <br>`public` ist Standard</p>
+                    <br>Operatoren &amp; Dekomposition über Namen</p>
                 </div>
                 <div class="container right abs emphasize"
                     style="top: 104px; left: 96px;  font-size: 112%; font-weight: bold">
@@ -514,7 +516,7 @@ enum class Title { Herr, Frau, wertes }                </code></pre>
                 <h3>Konventionen - Operatoren</h3>
 
                 <div data-markdown class="tgap">
-                    Feste Menge & Reihenfolge an Operatoren (vs. Scala).  <!-- -->
+                    Feste Menge &amp; Reihenfolge an Operatoren (vs. Scala).  <!-- -->
                     Diese werden über Namenskonventionen gemapped:
                 </div>
                 <div data-markdown class="tgap container left">
@@ -568,7 +570,8 @@ enum class Title { Herr, Frau, wertes }                </code></pre>
             </section>
 
 
-            <section data-background-video="img/atomic-bomb.mp4">
+            <section data-background-video="img/atomic-bomb.mp4"
+                     data-state="speedupvideo">
                 <h2 style="color: #fff">The <br>billion-dollar <br>mistake</h2>
 
                 <div style="margin-top: 400px; background-color: rgba(0,0,0,.5); padding: .2em" class="fragment">
@@ -610,39 +613,43 @@ enum class Title { Herr, Frau, wertes }                </code></pre>
             <section>
                 <h3>Effizienter Umgang mit Nullwert-Typen</h3>
                 <div class="smaller">
-                    <div data-markdown class="left twocol">
-                        ###### Safe nagivation operator
+                    <div data-markdown class="left twocol" style="border-right: 6px solid #ddd;  padding-left: 24px">
+                        <script type="text/template">
+                        ###### Safe nagivation operator<!-- .element style="margin: 32px 0 -12px 0" -->
                         ```kotlin
                         nullable = nullable?.toUpperCase()
                         ```
 
-                        ###### Elvis operator
+                        ###### Elvis operator<!-- .element style="margin: 48px 0 -12px 0" -->
                         ```kotlin
                         nonNullable = nullable ?: ""
                         ```
 
-                        ###### Kotlin extension für Nullable-Typen
+                        ###### Kotlin extension für Nullable-Typen<!-- .elementstyle="margin: 48px 0 -12px 0" -->
                         ```kotlin
                         // equals/orEmpty für String?
                         nonNullable = nullable.orEmpty()
                         val b = nullable.equals("foo")
                         ```
+                        </script>
                     </div>
                     <!-- @formatter:off -->
-                    <div data-markdown class="left twocol">
-                        ###### Smartcast
+                    <div data-markdown class="left twocol" style="width: 44%; padding-left: 24px ">
+                        <script type="text/template">
+                        ###### Smartcast<!-- .element style="margin: 32px 0 -12px 0" -->
                         ```kotlin
                         if (nullable != null) {
                            nonNullable = nullable.trim()
                         }
                         ```
 
-                        ###### Ich-weiss-es-besser&trade;
+                        ###### Ich-weiss-es-besser&trade;<!-- .element style="margin: 48px 0 -12px 0" -->
                         ```kotlin
                         //NPE-Gefahr voraus!
                         nullable!!.trim(3)
                         nonNullable = nullable!!
                         ```
+                        </script>
                     </div>
                     <!-- @formatter:on -->
                 </div>
@@ -666,12 +673,11 @@ enum class Title { Herr, Frau, wertes }                </code></pre>
                      style="height: 90px; left: 920px; top: 130px"
                      class="abs plain"
                      alt="Google Android Logo"/>
-                <h1 style="text-align: right; margin-right: 400px; padding-right: 40px; border-right: 5px solid black">Kotlin<br/>&
-                    Android</h1>
+                <h1 style="text-align: right; margin-right: 400px; padding-right: 40px; border-right: 5px solid black">Kotlin<br/>&amp; Android</h1>
             </section>
 
 
-            <section>
+            <section class="center">
                 <h2><img src="img/kotlin_logos/icon_Kotlin.svg" style="height: 52px;" class="plain" alt="Kotlin Icon"/>
                     +
                     <img src="img/android-robot.svg" style="height: 52px;" class="plain" alt="Google Android Logo"/>
@@ -741,9 +747,10 @@ enum class Title { Herr, Frau, wertes }                </code></pre>
             </section>
 
 
-            <section class="container">
-                <h3 class="bgap">Typischer Android-Boilerplate …</h3>
-                <pre style="width: 80%"><code class="java">EditText editTitle = (EditText) v.findViewById(R.id.edit_title);
+            <section class="container center">
+                <h3 class="bgap emphasize">Typischer Android-Boilerplate …</h3>
+                <div class="tgapxl">
+                    <pre style="width: 80%" ><code class="java">EditText editTitle = (EditText) v.findViewById(R.id.edit_title);
 editTitle.setText(mItem.getTitle());
 
 CheckBox enabledBox = (CheckBox) v.findViewById(R.id.enable_box);
@@ -755,9 +762,10 @@ createButton.setOnClickListener(new OnClickListener() {
         createElement();
     }
 });</code></pre>
-                <div class="decent">
-                    <p>… der Zugriff auf die Views in den Activities oder
-                        <br> Fragments über die <code>findViewById()</code>-Methode:
+                    <div class="decent subline ">
+                        <p>… der Zugriff auf die Views in den Activities oder
+                            <br> Fragments über die <code>findViewById()</code>-Methode:
+                    </div>
                 </div>
             </section>
 
@@ -852,18 +860,19 @@ create_entry.setOnClickListener { createElement() }</code></pre>
             </section>
 
 
-            <section class="left">
+            <section>
                 <h2>Extension methods / properties </h2>
 
-                <div class="tgap">
-                    <ul>
-                        <li>… ermöglichen die Erweiterung fremder Klassen
+                <div>
+                    <ul style="margin: -12px auto 12px auto;">
+                        <li>… erlauben das Erweitern fremder Klassen
                             <span class="decent">(Android, JRE)</span></li>
                         <li><code>this</code> zeigt auf das erweitertete Objekt</li>
                     </ul>
+                </div>
 
-                    <!-- @formatter:off -->
-                    <pre class="kotlin"><code>// Extension method  für ein Android Fragment
+                <!-- @formatter:off -->
+                <pre class="kotlin"><code>// Extension method  für ein Android Fragment
 fun Fragment.toast(message: String, duration: Int = Toast.LENGTH_SHORT) {
   Toast.makeText(this.getActivity(), message, duration).show()
 }
@@ -876,8 +885,7 @@ var EditText.stringValue: String
 <pre class="kotlin"><code>// Verwendung
 toast("Hallo Zuschauer!")
 nameField.stringValue = "Max Muster"</code></pre>
-                    <!-- @formatter:on -->
-                </div>
+                <!-- @formatter:on -->
             </section>
 
 
@@ -885,7 +893,7 @@ nameField.stringValue = "Max Muster"</code></pre>
                 <h2>Extensions „frei Haus“</h2>
                 <div class="small">
                     Zahlreiche Extensions sind in der Kotlin Standardbibliothek bereits enthalten.
-                    Sie <strong>erweitern Java Klassen</strong>
+                    <br>Sie <strong>erweitern Java Klassen</strong>
                     und sind <em>komfortabel über Code-Completion</em> zugänglich.
                 </div>
                 <div class="left" style="width: 90%; margin: 0 auto;">
@@ -896,9 +904,9 @@ for (int index = 0; index < list.size(); index++) {
         System.out.println(index + " -> " + list.get(index));
 }</code></pre>
                 <div class="small">
-                    Sie  helfen wesentlich beim <strong>prägnanten</strong>,
+                    Extensions helfen wesentlich beim <strong>prägnanten</strong>,
                     dennoch <strong>intuitiv lesbar</strong> Code.
-                    <br>Im Beispiel: <code>listOf</code>, <code>indices</code> und <code>filter</code>:
+
                 </div>
 
                 <pre class="kotlin"><code class="small">val list = listOf("a", "b", "c")
@@ -908,9 +916,9 @@ for (index in list.indices.filter { it % 2 == 0 }) {
 </code></pre>
                     <!-- @formatter:on -->
                 </div>
-                <div class="decent x-small">
-                    Entsprechende Bibliotheken auch für Android
-                    (z.B. <a href="https://github.com/Kotlin/anko">Anko</a>).
+                <div class="small tgapxl decent">
+                    Im Beispiel: <code>listOf</code>, <code>indices</code>, <code>filter</code>.
+                    Auch Bibliotheken für Android (<a href="https://github.com/Kotlin/anko">Anko</a>)!
                 </div>
             </section>
 
