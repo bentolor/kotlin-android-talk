@@ -48,6 +48,7 @@
                  class="plain" alt="eXXcellent solutions GmbH Logo"
             />
 
+            <!--
             <div style="text-align: left;">
                 <h1 style="margin: 380px 0 0 0; font-size: 1.9em;" class="emphasize">Russisch unterwegs!</h1>
                 <img data-src="img/kotlin_logos/logo_Kotlin.svg"
@@ -57,9 +58,19 @@
                 <h3 style="left: 220px; top: 503px;" class="abs">für die moderne</h3>
                 <h3 style="left: 220px; top: 568px;" class="abs">Android-Entwicklung</h3>
             </div>
+            -->
+            <div style="text-align: right;">
+                <h2 style="margin: 360px 0px 0 0; font-size: 1.9em; text-transform: none">
+                    <span class="emphasize">Moderne</span>
+                    Android-<br>Entwicklung
+                    mit <img data-src="img/kotlin_logos/logo_Kotlin.svg"
+                         style="width: 280px; "
+                         class="plain" alt="Kotlin"/>
+                </h2>
+            </div>
 
             <div id="version">
-                2016-08-22
+                2017-01-07
             </div>
 
             <div class="profile" style="position: absolute; top: 0; left: 900px;">
@@ -139,7 +150,7 @@
 
                     ## Sicherheit
 
-                    ## Ausdruckstärke <!-- Lesbarkeit -->
+                    ## Lesbarkeit
 
                     ## Interoperabilität
 
@@ -175,26 +186,18 @@
         <section>
 
             <section class="center">
-                <h1>Ausdrucksstärke &amp; Lesbarkeit</h1>
-                <h2 class="handwriting">Schneller in's Ziel!</h2>
-            </section>
+                <h1>Prägnanz &amp; Lesbarkeit</h1>
+                <h2 class="handwriting"></h2>
 
-
-            <section>
-                <h2>Prägnanz – Die Basics</h2>
-                <div>
-                    <h6>Sprachdesign &amp; Keywords</h6>
-                    <h6>Type inference</h6>
-                    <h6>Data Classes</h6>
-                    <h6>Ausdrücke</h6>
-                    <h6>Library Funktionen</h6>
-                    <h6>Konventionen</h6>
+                <div class="abs handwriting"
+                     style="transform: rotate(-7deg); left: 600px; top: 230px; font-size: 200%">
+                        Schneller an's Ziel!
                 </div>
             </section>
 
 
             <section>
-                <h3>Lesbarkeit vs. Prägnanz</h3>
+                <h2>Prägnanz vs. Lesbarkeit</h2>
                 <pre style="width: 80%; margin: 40px 0 0 -40px"><code style="font-size: 1.2em;">import java.util.*
 
 fun main(args: Array&lt;String&gt;) {
@@ -209,15 +212,15 @@ data class Gast(val name: String,
                 var zeit: Date = Date(),
                 val title: Title?)
 enum class Title { Herr, Frau, wertes }                </code></pre>
-                <div class="abs" style="top: 112px; left: 964px; width: 30%">
+                <div class="abs emphasize" style="top: 126px; left: 964px; width: 30%">
                     <p style="text-align: left; line-height: 1em; font-size: 82%">
                         <span class="fragment">&leftarrow; Optional semicolons<br></span>
                         <br>
                         <span class="fragment">&leftarrow; Top-level functions<br></span>
                         <!--&leftarrow; <code>if</code> als Ausdruck<br>--><br/>
-                        <span class="fragment">&leftarrow; Type inference &amp;<br>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;named params</span>
-                        <br>
+                        <span class="fragment">&leftarrow; Type inference &amp;
+                        <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;named params
+                        <br><!--&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Kein <code>new</code>--></span>
                         <br>
                         <span class="fragment">&leftarrow; String interpolation<br></span>
                         <br>
@@ -228,10 +231,10 @@ enum class Title { Herr, Frau, wertes }                </code></pre>
                     </p>
                 </div>
             </section>
-
+<!--
 
             <section class="">
-                <h2>Sprachdesign</h2>
+                <h2>Prägnanz – Sprachdesign</h2>
 
                 <p data-markdown>
                     * kein `new`
@@ -241,7 +244,7 @@ enum class Title { Herr, Frau, wertes }                </code></pre>
                     * Kurzschreibweisen
                     * Mehr &amp; Kurze Ausdrücke (`if`, `?:`, `?.`, …)
                 </p>
-            </section>
+            </section>-->
 
 
             <section class="">
@@ -456,15 +459,27 @@ enum class Title { Herr, Frau, wertes }                </code></pre>
             </section>
 
 
-            <section class="">
-                <h2>Ausdrücke, Library Funktionen &amp; Konventionen</h2>
+            <section>
+                <h2>Ausdrücke &amp; Konventionen</h2>
 
-                <p data-markdown>
-                    * `if`…`else` ist ein Ausdruck
-                    * String Templates
-                    * `listOf(…)`, `with()`, …
-                    * Operatoren, Dekomposition, …
-                </p>
+                <div class="container left abs decent"
+                    style="top: 112px; left: 520px; font-size: 92%; border-left: 4px solid #999; padding-left: 24px">
+                    <p>Mehr Ausdrücke  (<code>if</code>, <code>?:</code>, <code>?.</code>, …)
+                    <br>Pattern matching (<code>when</code>)
+                    <br>String Templates
+                    <br>Syntactic Sugar</p>
+                    <p class="tgap"><code>listOf(…)</code>, <code>repeat(3){…}</code>,
+                    <br><code>with(){…}</code>, …</p>
+                    <p class="tgap">Operatoren &amp; Dekomposition über Namen
+                    <br>kein <code>new</code>; <code>;</code> optional
+                    <br>`public` ist Standard</p>
+                </div>
+                <div class="container right abs emphasize"
+                    style="top: 104px; left: 96px;  font-size: 112%; font-weight: bold">
+                    <p>Ausdrucksstärke
+                    <p style="margin-top: 3.7em">Standard-Bibliothek
+                    <p style="margin-top: 1.4em">Konventionen
+                </div>
             </section>
 
 
@@ -584,7 +599,7 @@ enum class Title { Herr, Frau, wertes }                </code></pre>
                     ```
                     </div>
 
-                    <h3 class="tgap"><em>Nullwerte sind Bestandteil des Typsystems!</em></h3>
+                    <h3 class="tgap"><em>Nullwerte sind <br>Bestandteil des Typsystems!</em></h3>
 
                     <p class="decent x-small">An den Schnittstellen baut Kotlin
                         Prüfungen &amp; <code>@NotNull</code> Annotationen ein.</p>
@@ -692,11 +707,6 @@ enum class Title { Herr, Frau, wertes }                </code></pre>
             </section>
 
 
-            <section class="center">
-                <h2>In 3 Schritten</h2>
-            </section>
-
-
             <section>
                 <h4>1. Android Studio Plugin installieren</h4>
                 <img data-src="img/install-kotlin-plugin.png"
@@ -770,11 +780,11 @@ create_entry.setOnClickListener { createElement() }</code></pre>
 
 
             <section>
-                <div class="container left" style="width: 80%">
-                    <h2>Lambda-Ausdrücke</h2>
+                <div class="container" style="width:72%">
+                    <h2 class="bgap">Lambda-Ausdrücke</h2>
                     <!-- @formatter:off -->
-                    <div data-markdown>
-                        ###### Java
+                    <div data-markdown >
+                        <script type="text/template">
                         ```
                         view.setOnClickListener(new OnClickListener() {
                             @Override
@@ -784,10 +794,12 @@ create_entry.setOnClickListener { createElement() }</code></pre>
                         };
                         ```
 
-                        ###### Kotlin (SAM)
+
+                        # &downarrow;<!-- .element style="margin: -32px 0 -0 0; color: #ccc" -->
                         ```kotlin
                         view.setOnClickListener({ view -> doSomething(view) })
                         ```
+                        </script>
                     </div>
                     <!-- @formatter:on -->
                 </div>
@@ -902,8 +914,21 @@ for (index in list.indices.filter { it % 2 == 0 }) {
                 </div>
             </section>
 
+        </section>
 
-            <section>
+
+
+        <!--
+          === Tooling =============================================================================
+        -->
+        <section>
+
+            <section class="center" data-verbatim>
+                <h1>Tooling</h1>
+            </section>
+
+
+            <section data-verbatim>
                 <h2>Fokus: Tooling</h2>
                 <div data-markdown style="width: 82%; margin: 40px auto">
                     <script type="text/template">
@@ -934,7 +959,7 @@ for (index in list.indices.filter { it % 2 == 0 }) {
 
 
         <!--
-          === Android on Speed ====================================================================
+          === Demo  ===============================================================================
         -->
         <section>
 
@@ -947,12 +972,166 @@ for (index in list.indices.filter { it % 2 == 0 }) {
                      data-background-video="img/screencast-kotlin-android.mp4">
             </section>
 
+
+            <section data-background-color="#333">
+                <img data-src="img/hello-android-layout.png"
+                     alt="Hello Android: Layout"
+                     style="margin: -48px; padding:0">
+            </section>
+
+
+            <section data-transition="fade-out">
+                <h3>Hello Android: Code part #1</h3>
+                <img data-src="img/hello-android-code-1.png"
+                     alt="Hello Android: Code part #1"
+                     style="margin: -0px; padding:0; width: 64%">
+            </section>
+
+
+            <section data-transition="fade-in">
+                <h3>Hello Android: Code part #2</h3>
+                <img data-src="img/hello-android-code-2.png"
+                     alt="Hello Android: Code part #1"
+                     style="margin: -0px; padding:0; width: 64%">
+            </section>
+
         </section>
 
         <!--
-          === Ausdrucksstärke =====================================================================
+          === Android/Kotlin: The Bad =============================================================
         -->
         <section>
+
+            <section class="center">
+                <h1><img src="img/kotlin_logos/icon_Kotlin.svg" style="height: 74px;" class="plain" alt="Kotlin Icon"/>
+                    <span class="decent">+</span>
+                    <img src="img/android-robot.svg" style="height: 80px;" class="plain" alt="Google Android Logo"/>
+                    – Drawbacks
+                </h1>
+            </section>
+
+
+            <section>
+                <div class="left container">
+                    <h3>Die (wenigen) Schattenseiten</h3>
+
+                    <h6>64K Methoden Limit</h6>
+                    <ul>
+                        <li>Dalvik Limit: 65.536 Methoden pro DEX file.
+                            <span class="decent small">
+                                 <br>&rightarrow; Jedes Kotlin Properties = +2 Methoden
+                                 <br>&rightarrow; Abhilfe: Multidex &amp; <code>@JvmField</code>
+                             </span>
+                         </li>
+                    </ul>
+
+                    <h6>Overhead (gering)</h6>
+                    <ul>
+                        <li>IDE: Performance der Auto-completion
+                            <span class="decent small">(minimal)</span>
+                         </li>
+                        <li>APK Größe: ~736KB &amp; Checks</li>
+                        <li>Compilerlaufzeit im ersten Durchgang <span class="decent small">(~15%)</span></li>
+                    </ul>
+
+                    <h6>Auf Java abzielende Frameworks</h6>
+                    <ul>
+                        <li>Schöne API umständlicher; besser Java nutzen</li>
+                    </ul>
+                </div>
+            </section>
+
+
+            <section>
+                <h3>Android &amp; <code>null</code> – Typische Konstellation</h3>
+                <div data-markdown class="bgap">
+                    Werte für Initialisierung erst im Android-Callbacks bekannt …
+
+                    ```kotlin
+                    class EditPersonActivity : FragmentActivity() {
+
+                        var person: Person
+                        var anrede: String
+                        var imm: InputMethodManager
+                        …
+
+                        override fun onCreate(savedInstanceState: Bundle?) {
+                            super.onCreate(savedInstanceState)
+                            val personId = savedInstanceState?.getInt("value",0)
+
+                            person = PersonManager.load(id)
+                            anrede = resources.getString(R.string.anrede)
+                            imm = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
+                        }
+                    }
+                    ```
+                </div>
+                <div class="abs handwriting fragment"
+                     style="width: 530px;  transform: rotate(-7deg);
+                            left: 620px; top: 270px; color: #f33; font-size: 200%">
+                    So nicht möglich!
+                </div>
+            </section>
+
+
+            <section class="left">
+                <h3>Lösungen: Verzögerte Initalisierung</h3>
+                <div data-markdown class="bgap">
+                    ##### `lateinit` Properties (empfohlen)
+                    ```kotlin
+                    lateinit var person: Person
+                    ```
+                </div>
+                <div data-markdown class="bgap fragment">
+                    ##### Delegation des Properties
+                    ```kotlin
+                    var anrede: String by Delegates.notNull()
+                    ```
+                </div>
+                <div class="fragment">
+                    <div data-markdown class="bgap">
+                        ##### Lazy-Initalisierung
+                        ```kotlin
+                        val imm: InputMethodManager by lazy {
+                            getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
+                        }
+                        ```
+                    </div>
+                    <div class="abs handwriting"
+                         style="width: 580px;  transform: rotate(+9deg);
+                                left: 760px; top: 230px; ">
+                                Wirft sprechende Exception, falls ohne
+                                Initialisierung gelesen wird!
+                    </div>
+                </div>
+            </section>
+
+
+            <!-- <section>
+                <h3>Arbeiten mit Nullwert-fähigem Java-Code</h3>
+                    <img src="img/java-nullable.png" class="plain" style="width: 540px">
+                    <p class="small">Plattform Typ <code>Klasse!</code></p>
+                    <div class="abs handwriting"
+                         style="width: 430px;  transform: rotate(-13deg);
+                                left: 920px; top: 560px; color: #ccc; font-size: 110%">
+                        Kann nicht aus Kotlin heraus erzeugt werden!
+                    </div>
+            </section> -->
+
+        </section>
+
+
+
+        <!--
+          === Kotlin Advanced =====================================================================
+        -->
+        <section>
+
+            <section class="center">
+                <h1><img src="img/kotlin_logos/icon_Kotlin.svg" style="height: 80px;" class="plain" alt="Kotlin Icon"/>
+                    – Advanced
+                </h1>
+            </section>
 
             <section class="center">
                 <h2>Funktionen als <br>first-class elements</h2>
@@ -1027,31 +1206,6 @@ fun main(args: Array&lt;String&gt;) {
             </section>
 
 
-            <section data-verbatim>
-                <h3>Infix Notation</h3>
-
-                <div data-markdown class="container">
-                    - Sind Member-Funktionen oder Extension Methods
-                    - Haben einen einzigen Parameter
-                    - Und sind mit dem `infix` Schlüsselwort markiert
-
-                    <!-- @formatter:off -->
-                    ```kotlin
-                    infix fun Int.shl(x: Int): Int {
-                      …
-                    }
-
-                    1 shl 2
-
-                    // als Equivalent zu
-
-                    1.shl(2)
-                    ```
-                    <!-- @formatter:on -->
-                </div>
-            </section>
-
-
             <section>
                 <h3>Typsichere DSLs über „Empfänger“-Objekt</h3>
 
@@ -1103,9 +1257,6 @@ fun main(args: Array&lt;String&gt;) {
             </section>
 
 
-            <!--<section class="center"><h1>Showtime!</h1></section>-->
-
-
             <section>
                 <h3>Anko: Android-DSL für XML</h3>
 
@@ -1139,105 +1290,128 @@ fun main(args: Array&lt;String&gt;) {
                 </div>
                 <!-- @formatter:on -->
             </section>
+
+
+            <section data-verbatim>
+                <h3>Infix Notation</h3>
+
+                <!-- @formatter:off -->
+                <div data-markdown style="width: 60%; margin: 48px auto;" >
+                ```kotlin
+                infix fun Int.shl(x: Int): Int {
+                   …
+                }
+
+                1 shl 2       // als Equivalent zu 1.shl(2)
+                ```
+                </div>
+                <!-- @formatter:on -->
+                <div data-markdown class="container small">
+                    1. Sind Member-Funktionen oder Extension Methods
+                    2. Haben einen einzigen Parameter
+                    3. Und sind mit dem `infix` Schlüsselwort markiert
+                </div>
+            </section>
+
         </section>
 
 
+
         <!--
-          === Android Backsides ===================================================================
+          === Fazit ==== =========================================================================
         -->
         <section>
 
             <section class="center">
-                <h1>Android Backsides</h1>
+                <h1>Fazit</h1>
+            </section>
+<!--
+
+            <section>
+                <h2>The Good vs. The Bad vs. The Ugly</h2>
+                <div data-markdown>
+                    - Leicht &amp; intuitiv erlernbar! Vieles erschließt sich über Auto-Completion &amp; Intuition
+                    - Macht viel Spass &amp; Freude in der Verwendung!
+                    * Non-Nullables die in der Praxis doch welche sind
+                    - kein static! (compantion object)
+                    - kein package protected
+                </div>
             </section>
 
 
             <section>
-                <div class="" data-markdown>
-                    * DEX 64kl  Limit
-                    * IDEA Slower
-                    * geringer Overhead
-                    *
-                </div>
+                <h3>Lernen: Kotlin Koans</h3>
+                <img data-src="img/koans-edu-plugin.png"
+                     style="width: 72%"
+                     alt="Kotlin Educational Plugin mit Kotlin Koans">
+            </section>-->
+
+
+            <section>
+                <h2>Im Browser <!--mitmachen &amp;--> ausprobieren</h2>
+                <img data-src="img/try-kotlin.png" style="width: 100%"
+                     alt="Kotlin Koans">
+                <p style="font-size: 140%; margin-top: -12px;" class="decent">
+                    &rightarrow; <a href="http://try.kotl.in/"><b>http://try.kotl.in/</b></a>
+                </p>
             </section>
 
 
-            <section class="left">
-                <h3>Android &amp; <code>null</code> – Typische Konstellation</h3>
-                <div data-markdown class="bgap">
-                    Werte für Initialisierung erst im Android-Callbacks bekannt …
+            <section>
+                <h2>Quellen &amp; Materalien</h2>
 
-                    ```kotlin
-                    class EditPersonActivity : FragmentActivity() {
-
-                        var person: Person
-                        var anrede: String
-                        var imm: InputMethodManager
-                        …
-
-                        override fun onCreate(savedInstanceState: Bundle?) {
-                            super.onCreate(savedInstanceState)
-                            val personId = savedInstanceState?.getInt("value",0)
-
-                            person = PersonManager.load(id)
-                            anrede = resources.getString(R.string.anrede)
-                            imm = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
-                        }
-                    }
-                    ```
+                <div class="threecol small left" data-markdown>
+                    ##### Materialien für den Einstieg
+                    * [*kotlinlang.org*](https://kotlinlang.org/)
+                    * [*Kotlin Koans*](https://github.com/Kotlin/kotlin-koans)   <!--  -->
+                       auch online: [try.kotl.in](http://try.kotl.in)
+                       in IntelliJ: [Kotlin Edu Plugin](https://blog.jetbrains.com/kotlin/2016/03/kotlin-educational-plugin/)
+                    * [Ein Überblick über Java-Alternativen für den industriellen
+                    Einsatz](http://www.heise.de/developer/artikel/Ein-Ueberblick-ueber-Java-Alternativen-fuer-den-industriellen-Einsatz-2074554.html),
+                    Benjamin Schmid
                 </div>
-                <div class="abs handwriting fragment"
-                     style="width: 530px;  transform: rotate(-7deg);
-                            left: 620px; top: 270px; color: #f33; font-size: 200%">
-                    So nicht möglich!
-                </div>
-            </section>
 
+                <div class="threecol small left" data-markdown>
+                    ##### Referenzen
+                    - [Sprachreferenz](http://kotlinlang.org/docs/reference/)
 
-            <section class="left">
-                <h3>Verzögerte Property-Initalisierung</h3>
-                <div data-markdown class="bgap">
-                    ##### `lateinit` Properties (empfohlen)
-                    ```kotlin
-                    lateinit var person: Person
-                    ```
+                    ##### Verzeichnisse
+                    - [Awesome Kotlin](http://kotlin.link/)
+                    - [OSS Projects &amp; Libraries](https://kotlinlang.org/docs/resources.html)
+
+                    ##### Diverses
+                    - [*@kotlin*](https://twitter.com/kotlin) &amp; [*@bentolor*](https://twitter.com/bentolor)
+                    - [github.com/bentolor](https://github.com/bentolor)
                 </div>
-                <div data-markdown class="bgap fragment">
-                    ##### Delegation des Properties
-                    ```kotlin
-                    var anrede: String by Delegates.notNull()
-                    ```
+
+                <div class="threecol small left" data-markdown>
+                    ##### Nennenswerte Frameworks
+                    - [KAndroid](https://github.com/pawegio/KAndroid)
+                    - [Fuel](https://github.com/kittinunf/Fuel) (HTTP f. Android)
+                    - [RxKotlin](https://github.com/ReactiveX/RxKotlin) (Reactive)
+                    - [spek](https://github.com/jetbrains/spek) (Testing)
+                    - [kovenant](https://github.com/mplatvoet/kovenant)  <!-- -->
+                      (Android Promises)
+                    - [kotlinx.support](https://github.com/Kotlin/kotlinx.support)  <!-- -->
+                       (JDK7/8 features)
+                    - [Klaxon](https://github.com/cbeust/klaxon) (JSON)
                 </div>
-                <div class="fragment">
-                    <div data-markdown class="bgap">
-                        ##### Lazy-Initalisierung
-                        ```kotlin
-                        val imm: InputMethodManager by lazy {
-                            getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
-                        }
-                        ```
-                    </div>
-                    <div class="abs handwriting"
-                         style="width: 580px;  transform: rotate(+9deg);
-                                left: 760px; top: 230px; ">
-                                Wirft sprechende Exception, falls ohne
-                                Initialisierung gelesen wird!
-                    </div>
+
+                <div class="x-small" style="padding-top: 60px; clear: left" data-markdown>
+                    Bildnachweis:
+                    [Kotlin Islands Maps](https://commons.wikimedia.org/wiki/File:Kotlin_Island_1706.png),
+                    [Atomic bomb
+                    explosion](https://www.pond5.com/stock-footage/37592494/fireball-and-smoke-formation-out-atomic-blast.html),
+                    [Android Robot](https://commons.wikimedia.org/wiki/File:Android_robot.svg),
+                    [Kotlin Logo](https://resources.jetbrains.com/assets/products/kotlin/kotlin_logos.zip),
+                    [Hand-written arrows](http://designercandies.net/hand-drawn-arrows-brush/)
                 </div>
             </section>
 
         </section>
 
-
-        <!--
-          === Interoperabilität ==================================================================
-        -->
+<!--
         <section>
-
-            <section class="center">
-                <h1>Interoperabilität</h1>
-            </section>
-
 
             <section>
                 <h3>Java Interoperabilität – Allgemeines</h3>
@@ -1248,13 +1422,13 @@ fun main(args: Array&lt;String&gt;) {
                     <li>Java &rightarrow; gelegentlich sperriger
                         <ul style="font-size: .86em" class="decent small">
                             <li>kein direktes <code>static</code> in Kotlin, sondern <i>companion object</i>
-                                <!-- @formatter:off -->
+                                <!- - @formatter:off - ->
                                 <pre><code class="small">public static final int VISIBLE = 0x00000000;
                                     &downarrow;
 companion object {
     @JvmField val VISIBLE: Int = 0x00000000
 }</code></pre>
-                                <!-- @formatter:on -->
+                                <!- - @formatter:on - ->
                             </li>
                             <li>SAMs mit <code>void</code> statt <code>Unit</code></li>
                             <li>Kein <i>package protected</i> in Kotlin</li>
@@ -1288,123 +1462,7 @@ companion object {
             </section>
 
         </section>
-
-
-        <!--
-          === Tooling =============================================================================
-        -->
-        <section>
-            <section class="center">
-                <h1>Tooling</h1>
-            </section>
-
-
-            <section>
-                <h3>Lernen: Kotlin Koans</h3>
-                <img data-src="img/koans-edu-plugin.png"
-                     alt="Kotlin Educational Plugin mit Kotlin Koans">
-            </section>
-
-        </section>
-
-        <!--
-          === Fazit ==== =========================================================================
-        -->
-        <section>
-
-            <section class="center">
-                <h1>Fazit</h1>
-            </section>
-
-
-            <section>
-                <h3>Arbeiten mit Nullwert-fähigem Java-Code</h3>
-                    <img src="img/java-nullable.png" class="plain" style="width: 540px">
-                    <p class="small">Plattform Typ <code>Klasse!</code></p>
-                    <!-- <p class="small decent">Kann nicht mit Kotlin erzeugt werden! </p> -->
-                    <div class="abs handwriting"
-                         style="width: 430px;  transform: rotate(-13deg);
-                                left: 920px; top: 560px; color: #ccc; font-size: 110%">
-                        Kann nicht aus Kotlin heraus erzeugt werden!
-                    </div>
-            </section>
-
-
-            <section>
-                <h2>The Good vs. The Bad vs. The Ugly</h2>
-                <div data-markdown>
-                    - Leicht &amp; intuitiv erlernbar! Vieles erschließt sich über Auto-Completion &amp; Intuition
-                    - Macht viel Spass &amp; Freude in der Verwendung!
-                    - Kotlin-Konverter der Beispiele nicht empfehlenswert
-                    * Non-Nullables die in der Praxis doch welche sind
-                    * `feld!!.foo` statt `lokaleVar.foo`.
-                    Speziell die UI Referenzen (nach`onCreate`)
-                    - kein static! (compantion object)
-                    - kein package protected
-                </div>
-            </section>
-
-
-            <section>
-
-                <h2>Quellen &amp; Materalien</h2>
-
-                <div class="threecol small left" data-markdown>
-                    ##### Materialien für den Einstieg
-                    * [*kotlinlang.org*](https://kotlinlang.org/)
-                    * [*Kotlin Koans*](https://github.com/Kotlin/kotlin-koans)   <!--  -->
-                       auch online: [try.kotl.in](http://try.kotl.in)
-                       in IntelliJ: [Kotlin Edu Plugin](https://blog.jetbrains.com/kotlin/2016/03/kotlin-educational-plugin/)
-                    * [Ein Überblick über Java-Alternativen für den industriellen
-                    Einsatz](http://www.heise.de/developer/artikel/Ein-Ueberblick-ueber-Java-Alternativen-fuer-den-industriellen-Einsatz-2074554.html),
-                    Benjamin Schmid
-                </div>
-
-                <div class="threecol small left" data-markdown>
-                    ##### Referenzen
-                    - [Sprachreferenz](http://kotlinlang.org/docs/reference/)
-
-                    ##### Verzeichnisse
-                    - [Awesome Kotlin](http://kotlin.link/)
-                    - [OSS Projects & Libraries](https://kotlinlang.org/docs/resources.html)
-
-                    ##### Diverses
-                    - [*@kotlin*](https://twitter.com/kotlin) & [*@bentolor*](https://twitter.com/bentolor)
-                </div>
-
-                <div class="threecol small left" data-markdown>
-                    ##### Nennenswerte Frameworks
-                    - [KAndroid](https://github.com/pawegio/KAndroid)
-                    - [Fuel](https://github.com/kittinunf/Fuel) (HTTP f. Android)
-                    - [RxKotlin](https://github.com/ReactiveX/RxKotlin) (Reactive)
-                    - [spek](https://github.com/jetbrains/spek) (Testing)
-                    - [kovenant](https://github.com/mplatvoet/kovenant)  <!-- -->
-                      (Android Promises)
-                    - [kotlinx.support](https://github.com/Kotlin/kotlinx.support)  <!-- -->
-                       (JDK7/8 features)
-                    - [Klaxon](https://github.com/cbeust/klaxon) (JSON)
-                </div>
-
-                <div class="x-small" style="padding-top: 60px; clear: left" data-markdown>
-                    Bildnachweis:
-                    [Kotlin Islands Maps](https://commons.wikimedia.org/wiki/File:Kotlin_Island_1706.png),
-                    [Atomic bomb
-                    explosion](https://www.pond5.com/stock-footage/37592494/fireball-and-smoke-formation-out-atomic-blast.html),
-                    [Android Robot](https://commons.wikimedia.org/wiki/File:Android_robot.svg),
-                    [Kotlin Logo](https://resources.jetbrains.com/assets/products/kotlin/kotlin_logos.zip),
-                    [Hand-written arrows](http://designercandies.net/hand-drawn-arrows-brush/)
-                </div>
-            </section>
-
-
-            <section>
-                <h4>Im Browser mitmachen &amp; ausprobieren</h4>
-                <img data-src="img/try-kotlin.png" style="width: 100%"
-                     alt="Kotlin Koans">
-                <a href="http://try.kotl.in/"><b>http://try.kotl.in/</b></a>
-            </section>
-
-        </section>
+-->
 
     </div>
 </div>
