@@ -468,7 +468,7 @@ enum class Title { Herr, Frau, wertes }                </code></pre>
             </section>
 
 
-            <section>
+            <section data-verbatim>
                 <h3>Idiome</h3>
 
                 <!-- @formatter:off -->
@@ -495,7 +495,7 @@ enum class Title { Herr, Frau, wertes }                </code></pre>
             </section>
 
 
-            <section>
+            <section data-verbatim>
                 <h3>Konventionen - Operatoren</h3>
 
                 <div data-markdown class="tgap">
@@ -794,7 +794,7 @@ create_entry.setOnClickListener { createElement() }</code></pre>
             </section>
 
 
-            <section>
+            <section data-verbatim>
                 <div class="container">
                     <h3>Lambdas – Syntactic sugar</h3>
                     <div class="tgapxl">
@@ -813,7 +813,7 @@ create_entry.setOnClickListener { createElement() }</code></pre>
             </section>
 
 
-            <section>
+            <section data-verbatim>
                 <!-- <h3>Lambdas – Syntactic sugar</h3> -->
                 <!-- @formatter:off -->
                 <div data-markdown style="width: 86%; margin: 60px auto 0 auto" class="left">
@@ -878,9 +878,6 @@ for (index in list.indices) {
           === Ausdrucksstärke =====================================================================
         -->
         <section>
-
-
-
 
             <section>
                 <h3>Extension methods</h3>
@@ -982,7 +979,7 @@ fun main(args: Array&lt;String&gt;) {
             </section>
 
 
-            <section>
+            <section data-verbatim>
                 <h3>Infix Notation</h3>
 
                 <div data-markdown class="container">
@@ -1382,6 +1379,18 @@ companion object {
 
 <script src="lib/js/head.min.js"></script>
 <script src="js/reveal.js"></script>
+
+<!-- hide "verbatim" sections if URL contains "terse"-Keyword -->
+<script>
+    if (window.location.search.match(/terse/gi)) {
+        var sections = document.getElementsByTagName('section');
+        for (var i = sections.length-1; i > -1; --i) {
+            if (sections[i].hasAttribute("data-verbatim")) {
+                sections[i].remove();
+            }
+        }
+    }
+</script>
 
 <script>
     // More info https://github.com/hakimel/reveal.js#configuration
