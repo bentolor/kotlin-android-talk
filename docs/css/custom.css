@@ -317,6 +317,10 @@
     margin-top: .8em;
 }
 
+.reveal .tgapxl {
+    margin-top: 1.6em;
+}
+
 .reveal .lgap {
     margin-left: .8em;
 }
@@ -331,7 +335,7 @@
     filter: drop-shadow(0px 0px 30px rgba(255, 255, 255, 1));
 }
 
-.reveal .handwritten {
+.reveal .handwriting {
     font-family: Zeyada, cursive;
     font-size: 1.4em;
     line-height: .9em;
