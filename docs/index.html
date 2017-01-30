@@ -294,9 +294,9 @@ enum class Title { Herr, Frau, wertes }                </code></pre>
                     <div style="position: absolute; left: 52%; top: 230px; font-size: 240%; color: #999">
                         &rightarrow;
                     </div>
-                    <div class="twocol" style="width: 40%" data-markdown>
+                    <div class="twocol" style="width: 42%" data-markdown>
                         ```kotlin
-                        fun typeInfer(vals: List<Int>) {
+                        fun typeInfer(vals: List&lt;Int&gt;){
                           val distinct = vals.toSet()
                           val first = vals[0]
                           val negs = vals.filter(
