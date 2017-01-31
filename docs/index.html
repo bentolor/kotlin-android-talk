@@ -683,6 +683,38 @@ enum class Title { Herr, Frau, wertes }                </code></pre>
                 </div>
             </section>
 
+
+            <section>
+                <h3>Effizienter Umgang mit Nullwert-Typen</h3>
+                <div class="smaller">
+                    <div data-markdown class="">
+                        <script type="text/template">
+```java
+TextView child = null;
+if (toolbar != null && toolbar.getChildAt(0) instanceof TextView) {
+    child = (TextView) toolbar.getChildAt(0);
+}
+textView = child != null ? child : new TextView(getBaseContext());
+
+if (textView instanceof EditText) {
+    ((EditText) textView).selectAll();
+}
+```
+## &downarrow;<!-- .element style="margin: -32px auto -0 auto; color: #ccc" -->
+
+```kotlin
+val child = toolbar?.getChildAt(0) as? TextView
+textView = child ?: TextView(baseContext)
+
+if (child is EditText) {
+    child.selectAll()
+}
+```
+</script>
+                    </div>
+                </div>
+            </section>
+
         </section>
 
 
@@ -1554,7 +1586,7 @@ companion object {
 <!-- hack: increase playback speed of background video -->
 <script>
     Reveal.addEventListener( 'speedupvideo', function() {
-        document.getElementsByTagName("video")[0].playbackRate = 2.0
+        document.getElementsByTagName("video")[0].playbackRate = 2.5
     }, false );
 </script>
 
